@@ -149,7 +149,7 @@ class PermissionSeeder extends Seeder
         ]);
 
 
-                         //for - BottomPrice
+        //for - BottomPrice
         Permission::create([
             'name' => 'CreateBottomPrice',
             'parent' => 'BottomPrice',
@@ -225,7 +225,7 @@ class PermissionSeeder extends Seeder
 
 
 
-                         //for - BR-ATJ
+        //for - BR-ATJ
         Permission::create([
             'name' => 'CreateBR-ATJ',
             'parent' => 'BR-ATJ',
@@ -243,7 +243,7 @@ class PermissionSeeder extends Seeder
             'parent' => 'BR-ATJ',
         ]);
 
-                //for - Enquiries
+        //for - Enquiries
         Permission::create([
             'name' => 'CreateEnquiries',
             'parent' => 'Enquiries',
@@ -261,8 +261,8 @@ class PermissionSeeder extends Seeder
             'parent' => 'Enquiries',
         ]);
 
-         //for - Reports
-         Permission::create([
+        //for - Reports
+        Permission::create([
             'name' => 'CreateReports',
             'parent' => 'Reports',
         ]);
@@ -279,6 +279,42 @@ class PermissionSeeder extends Seeder
             'parent' => 'Reports',
         ]);
 
+
+        //for - Brand
+        Permission::create([
+            'name' => 'CreateBrand',
+            'parent' => 'Brand',
+        ]);
+        Permission::create([
+            'name' => 'ReadBrand',
+            'parent' => 'Brand',
+        ]);
+        Permission::create([
+            'name' => 'UpdateBrand',
+            'parent' => 'Brand',
+        ]);
+        Permission::create([
+            'name' => 'DeleteBrand',
+            'parent' => 'Brand',
+        ]);
+
+        //for - Division
+        Permission::create([
+            'name' => 'CreateDivision',
+            'parent' => 'Division',
+        ]);
+        Permission::create([
+            'name' => 'ReadDivision',
+            'parent' => 'Division',
+        ]);
+        Permission::create([
+            'name' => 'UpdateDivision',
+            'parent' => 'Division',
+        ]);
+        Permission::create([
+            'name' => 'DeleteDivision',
+            'parent' => 'Division',
+        ]);
 
 
 
