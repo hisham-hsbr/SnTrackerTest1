@@ -2,7 +2,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('admin.home') }}" class="brand-link">
-            <img src="{{asset('adminLinks/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="{{ asset('adminLinks/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">SnTracker</span>
         </a>
 
@@ -11,20 +12,25 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{asset('adminLinks/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('adminLinks/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-                    <a href="#" class="d-block"> @foreach (Auth::user()->roles as $role)
-                        <span class="d-block">
-                            Role - {{ $role->name }}
-                        </span> @endforeach</a>
+                    <a href="#" class="d-block">
+                        @foreach (Auth::user()->roles as $role)
+                            <span class="d-block">
+                                Role - {{ $role->name }}
+                            </span>
+                        @endforeach
+                    </a>
                 </div>
             </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <!-- <li class="nav-item has-treeview menu-open">
@@ -66,18 +72,20 @@
                         </a>
                     </li> -->
 
-                    <li class="nav-item has-treeview
+                    <li
+                        class="nav-item has-treeview
                 @permitToParent('Admin')
                     {{-- {{ (request()->is('admin/home')) ? 'menu-open' : '' }} --}}
-                        {{ (request()->is('admin/show')) ? 'menu-open' : '' }}
-                        {{ (request()->is('admin/roles')) ? 'menu-open' : '' }}
-                        {{ (request()->is('admin/permissions')) ? 'menu-open' : '' }}
+                        {{ request()->is('admin/show') ? 'menu-open' : '' }}
+                        {{ request()->is('admin/roles') ? 'menu-open' : '' }}
+                        {{ request()->is('admin/permissions') ? 'menu-open' : '' }}
                     ">
-                        <a href="#" class="nav-link
+                        <a href="#"
+                            class="nav-link
                         {{-- {{ (request()->is('admin/home')) ? 'active' : '' }} --}}
-                        {{ (request()->is('admin/show')) ? 'active' : '' }}
-                        {{ (request()->is('admin/roles')) ? 'active' : '' }}
-                        {{ (request()->is('admin/permissions')) ? 'active' : '' }}
+                        {{ request()->is('admin/show') ? 'active' : '' }}
+                        {{ request()->is('admin/roles') ? 'active' : '' }}
+                        {{ request()->is('admin/permissions') ? 'active' : '' }}
                         ">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
@@ -89,15 +97,17 @@
                         <ul class="nav nav-treeview">
                             @permitToParent('Admin')
                             <li class="nav-item">
-                                <a href="{{ route('admin.show') }}" class="nav-link {{ (request()->is('admin/show')) ? 'active' : '' }}">
+                                <a href="{{ route('admin.show') }}"
+                                    class="nav-link {{ request()->is('admin/show') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Admin User</p>
                                 </a>
                             </li>
-                             @endpermitToParent
-                             @permitToParent('Role')
+                            @endpermitToParent
+                            @permitToParent('Role')
                             <li class="nav-item">
-                                <a href="{{ route('admin.roles')}}" class="nav-link {{ (request()->is('admin/roles')) ? 'active' : '' }}">
+                                <a href="{{ route('admin.roles') }}"
+                                    class="nav-link {{ request()->is('admin/roles') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Role</p>
                                 </a>
@@ -105,7 +115,8 @@
                             @endpermitToParent
                             @permitToParent('Permission')
                             <li class="nav-item">
-                                <a href="{{ route('admin.permissions')}}" class="nav-link {{ (request()->is('admin/permissions')) ? 'active' : '' }}">
+                                <a href="{{ route('admin.permissions') }}"
+                                    class="nav-link {{ request()->is('admin/permissions') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Permission</p>
                                 </a>
@@ -113,7 +124,7 @@
                             @endpermitToParent
                             @permitToParent('User')
                             <li class="nav-item">
-                                <a href="" class="nav-link {{ (request()->is('admin/users')) ? 'active' : '' }}">
+                                <a href="" class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Users</p>
                                 </a>
@@ -121,17 +132,19 @@
                             @endpermitToParent
                         </ul>
                     </li>
-                @endpermitToParent
+                    @endpermitToParent
                     {{-- <li class="nav-item has-treeview menu-open"> --}}
-                @permitToParent('Admin')
-                    <li class="nav-item has-treeview
-                                                    {{ (request()->is('admin/product')) ? 'menu-open' : '' }}
-                                                    {{ (request()->is('admin/customer')) ? 'menu-open' : '' }}
-                                                    {{ (request()->is('admin/supplier')) ? 'menu-open' : '' }}
+                    @permitToParent('Admin')
+                    <li
+                        class="nav-item has-treeview
+                                                    {{ request()->is('admin/product') ? 'menu-open' : '' }}
+                                                    {{ request()->is('admin/customer') ? 'menu-open' : '' }}
+                                                    {{ request()->is('admin/supplier') ? 'menu-open' : '' }}
+                                                    {{ request()->is('admin/brand') ? 'menu-open' : '' }}
                                                     {{-- {{ (request()->is('admin/SerialNumber')) ? 'menu-open' : '' }} --}}
                                                     {{-- {{ (request()->is('admin/BottomPrice')) ? 'menu-open' : '' }} --}}
                                                     ">
-                    {{-- <li class="nav-item has-treeview menu-open"> --}}
+                        {{-- <li class="nav-item has-treeview menu-open"> --}}
                         <a href="#" class="nav-link ">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
@@ -143,24 +156,36 @@
                         <ul class="nav nav-treeview">
                             @permitToParent('Product')
                             <li class="nav-item">
-                                <a href="{{route('product.index')}}" class="nav-link {{ (request()->is('admin/product')) ? 'active' : '' }}">
-                                {{-- <a href="{{route('product.index')}}" class="nav-link active"> --}}
+                                <a href="{{ route('product.index') }}"
+                                    class="nav-link {{ request()->is('admin/product') ? 'active' : '' }}">
+                                    {{-- <a href="{{route('product.index')}}" class="nav-link active"> --}}
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Product</p>
                                 </a>
                             </li>
                             @endpermitToParent
-                             @permitToParent('Customer')
+                            @permitToParent('Customer')
                             <li class="nav-item">
-                                <a href="{{ route('admin.home') }}" class="nav-link {{ (request()->is('admin/customer')) ? 'active' : '' }}">
+                                <a href="{{ route('admin.home') }}"
+                                    class="nav-link {{ request()->is('admin/customer') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Customer</p>
                                 </a>
                             </li>
                             @endpermitToParent
-                             @permitToParent('Supplier')
+                            @permitToParent('Brand')
                             <li class="nav-item">
-                                <a href="{{ route('admin.home') }}" class="nav-link {{ (request()->is('admin/supplier')) ? 'active' : '' }}">
+                                <a href="{{ route('brand.index') }}"
+                                    class="nav-link {{ request()->is('admin/brand') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Brand</p>
+                                </a>
+                            </li>
+                            @endpermitToParent
+                            @permitToParent('Supplier')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.home') }}"
+                                    class="nav-link {{ request()->is('admin/supplier') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Supplier</p>
                                 </a>
@@ -168,10 +193,11 @@
                             @endpermitToParent
                         </ul>
                     </li>
-                @endpermitToParent
+                    @endpermitToParent
                     @permitToParent('SerialNumber')
                     <li class="nav-item">
-                        <a href="{{route('SerialNumber.index')}}" class="nav-link {{ (request()->is('admin/SerialNumber')) ? 'active' : '' }}">
+                        <a href="{{ route('SerialNumber.index') }}"
+                            class="nav-link {{ request()->is('admin/SerialNumber') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Serial Number
@@ -182,7 +208,8 @@
                     @endpermitToParent
                     @permitToParent('BottomPrice')
                     <li class="nav-item">
-                        <a href="{{route('BottomPrice.index')}}" class="nav-link {{ (request()->is('admin/BottomPrice')) ? 'active' : '' }} ">
+                        <a href="{{ route('BottomPrice.index') }}"
+                            class="nav-link {{ request()->is('admin/BottomPrice') ? 'active' : '' }} ">
                             <i class="nav-icon fas fa-tags "></i>
                             <p>
                                 Bottom Price
@@ -219,42 +246,42 @@
                                     <p>Inline</p>
                                 </a>
                             </li>
-                                                            <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ameer</p>
-                                </a>
-                            </li>
-                        </ul>
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ameer</p>
+                            </a>
                     </li>
-                    @endpermitToParent
-                    @permitToParent('Enquiries')
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tree"></i>
-                            <p>
-                                Enquiries
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>General</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Icons</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endpermitToParent
+                </ul>
+                </li>
+                @endpermitToParent
+                @permitToParent('Enquiries')
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>
+                            Enquiries
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>General</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Icons</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endpermitToParent
 
 
-                    <!-- <li class="nav-header">EXAMPLES</li>
+                <!-- <li class="nav-header">EXAMPLES</li>
 
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">
