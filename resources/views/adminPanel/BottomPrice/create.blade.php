@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Sntracker : Bottom Price - Create')
+@section('pageTitle', 'Bottom Price - Create')
 @section('main-content')
 <!-- Main content -->
 <section class="content">

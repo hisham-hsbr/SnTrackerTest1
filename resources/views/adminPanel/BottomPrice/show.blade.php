@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Sntracker : Bottom Price')
+@section('pageTitle', 'Bottom Price')
 @section('head')
 
 <!-- DataTables -->

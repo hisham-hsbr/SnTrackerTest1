@@ -4,7 +4,7 @@
 
 {{-- <title>AdminLTE 3 | Dashboard 2</title> --}}
 {{-- <title>SnTracker | @yield('pageTitle')</title> --}}
-<title>@yield('pageTitle')</title>
+<title>SnTracker : @yield('pageTitle')</title>
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('adminLinks/dist/img/favicon.ico')}}">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{asset('adminLinks/plugins/fontawesome-free/css/all.min.css')}}">
