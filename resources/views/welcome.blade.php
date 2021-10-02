@@ -30,7 +30,7 @@
     <!-- lockscreen image -->
     <div class="lockscreen-image">
       <img src="{{asset('adminLinks/dist/img/user1-128x128.jpg')}}" alt="User Image">
-      
+
     </div>
     <!-- /.lockscreen-image -->
 
@@ -40,7 +40,8 @@
         <input type="password" class="form-control" placeholder="password">
 
         <div class="input-group-append">
-          <button type="button" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>
+            <a href="{{ route('admin.home') }}" class="fas fa-arrow-right text-muted p-2"></a>
+          {{-- <button type="button"  class="btn"><i href="{{ route('admin.home') }}" class="fas fa-arrow-right text-muted"></i></button> --}}
         </div>
       </div>
     </form>
