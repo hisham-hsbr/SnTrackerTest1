@@ -69,6 +69,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
+
+
+
                                                     <div class="form-group">
                                                       <label>Division</label>
                                                       <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
@@ -86,97 +89,26 @@
                                                       </select>
                                                     </div>
                                             </div>
+
+
+                                            {{-- <div class="form-group">
+                                                <label>Brand</label>
+                                                <select class="select2" multiple="multiple" data-placeholder="Select a Brand" style="width: 100%;" name="Brands[]">
+                                                    @foreach($Brands as $Brand)
+                                                    <option value="{{$Brand->id}}">{{$Brand->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div> --}}
+
+
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                   <label>Brand</label>
                                                   <select class="form-control select2" style="width: 100%;" name="brand" id="brand" style="text-transform: uppercase" >
                                                     <option selected="selected">{{old('brand')}}</option>
-                                                    <option>ACEMAX</option>
-                                                    <option>ACER</option>
-                                                    <option>ADATA</option>
-                                                    <option>ALFA</option>
-                                                    <option>ANKER</option>
-                                                    <option>APPLE</option>
-                                                    <option>ASHTONE</option>
-                                                    <option>ASUS</option>
-                                                    <option>ATOUCH</option>
-                                                    <option>AVIROS</option>
-                                                    <option>BD GROUP</option>
-                                                    <option>BENQ</option>
-                                                    <option>BROTHER</option>
-                                                    <option>CALL TOUCH</option>
-                                                    <option>CANON</option>
-                                                    <option>COBY</option>
-                                                    <option>DAHUA</option>
-                                                    <option>DATAZONE</option>
-                                                    <option>DELL</option>
-                                                    <option>DIGIRICH</option>
-                                                    <option>DOMESTIC TOYS</option>
-                                                    <option>EPSON</option>
-                                                    <option>FONECOM</option>
-                                                    <option>FOXCON</option>
-                                                    <option>FUJISTU</option>
-                                                    <option>GENIUS</option>
-                                                    <option>GTAB</option>
-                                                    <option>HEATZ</option>
-                                                    <option>HENZER</option>
-                                                    <option>HIK VISION</option>
-                                                    <option>HOCO</option>
-                                                    <option>HP</option>
-                                                    <option>HUAWEI</option>
-                                                    <option>IDEAL</option>
-                                                    <option>IMATION</option>
-                                                    <option>INTERNATIONAL TOYS</option>
-                                                    <option>IPAD</option>
-                                                    <option>IPHONE</option>
-                                                    <option>JOYROOM</option>
-                                                    <option>KASPERSKY</option>
-                                                    <option>KINGMAX</option>
-                                                    <option>KINGSTON</option>
-                                                    <option>LB LINK</option>
-                                                    <option>LDNIO</option>
-                                                    <option>LENOVO</option>
-                                                    <option>LEXAR</option>
-                                                    <option>LOGIN</option>
-                                                    <option>LOGITECH</option>
-                                                    <option>LOGON</option>
-                                                    <option>MCAFEE</option>
-                                                    <option>MEIZU</option>
-                                                    <option>MI</option>
-                                                    <option>MICRODIGIT</option>
-                                                    <option>MICROLAB</option>
-                                                    <option>MICROSOFT</option>
-                                                    <option>NOKIA</option>
-                                                    <option>NORTON</option>
-                                                    <option>NYORK</option>
-                                                    <option>OPPO</option>
-                                                    <option>OTHERS</option>
-                                                    <option>OVLENG</option>
-                                                    <option>PANASONIC</option>
-                                                    <option>PHILIPS</option>
-                                                    <option>PNY</option>
-                                                    <option>POWER GO</option>
-                                                    <option>PRODA</option>
-                                                    <option>RAVOZ</option>
-                                                    <option>REMAX</option>
-                                                    <option>SAMSUNG</option>
-                                                    <option>SANDISK</option>
-                                                    <option>SEAGATE</option>
-                                                    <option>SMARTBERRY</option>
-                                                    <option>SONY</option>
-                                                    <option>TECNO</option>
-                                                    <option>TECSA</option>
-                                                    <option>TIT</option>
-                                                    <option>TOSHIBA</option>
-                                                    <option>TP LINK</option>
-                                                    <option>VEGER</option>
-                                                    <option>VIVO</option>
-                                                    <option>WESTERN DIGIT</option>
-                                                    <option>WINDOWS</option>
-                                                    <option>WO LOGO</option>
-                                                    <option>XIAOMI</option>
-                                                    <option>XTREME</option>
-                                                    <option>YINGEDE</option>
+                                                    @foreach($Brands as $Brand)
+                                                    <option value="{{$Brand->id}}">{{$Brand->name}}</option>
+                                                    @endforeach
 
                                                   </select>
                                                 </div>
@@ -279,6 +211,31 @@
         });
 
     });
+</script>
+
+
+<script src="jquery-3.5.0.min.js"></script>
+<script>
+            $(document).ready(function(){
+            // Get value on keyup funtion
+            $("#fb").change(function(){
+
+            var rt=0;
+            var x = Number($("#fb").val());
+            // var y = Number($("#sb").val());
+            // var y =2;
+            var sb=x + 2;
+            var tb=x + 4;
+            var lb=x + 6;
+            var rt=x + 30;
+
+            $('#sb').val(sb);
+            $('#tb').val(tb);
+            $('#lb').val(lb);
+            $('#rt').val(rt);
+
+        });
+        });
 </script>
 
 <!-- Select2 -->

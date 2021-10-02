@@ -148,7 +148,7 @@ $(function() {
             @endpermitTo
             @permitTo('UpdateBottomPrice')
             { data: 'columnEdit', name: 'columnEdit' },
-            { data: 'deleteBottom', name: 'deleteBottom' },
+            // { data: 'deleteBottom', name: 'deleteBottom' },
             @endpermitTo
 
         ]

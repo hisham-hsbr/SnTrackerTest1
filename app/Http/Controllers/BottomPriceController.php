@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\BottomPrice;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -96,7 +97,10 @@ class BottomPriceController extends Controller
     public function create()
     {
         //
-        return view('adminPanel.BottomPrice.create');
+        $Brands = Brand::all();
+
+        return view('adminPanel.BottomPrice.create', compact('Brands'));
+
     }
 
     /**
