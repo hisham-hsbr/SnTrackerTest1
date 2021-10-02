@@ -28,18 +28,15 @@ class ProductController extends Controller
         // return Datatables::of(Product::query())->make(true);
         return Datatables::of(Product::query())
 
-        ->editColumn('code', function(Product $Product) {
-            return strtoupper($Product->code);
-        })
+            ->editColumn('code', function (Product $Product) {
+                return strtoupper($Product->code);
+            })
 
 
-        ->editColumn('name', function(Product $Product) {
-            return strtoupper($Product->name);
-        })
-        ->toJson();
-
-
-
+            ->editColumn('name', function (Product $Product) {
+                return strtoupper($Product->name);
+            })
+            ->toJson();
     }
 
 
