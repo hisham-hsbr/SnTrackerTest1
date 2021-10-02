@@ -1,4 +1,4 @@
-{{-- <a href="/BottomPrice/edit"><span class="fas fa-edit"></span></a> --}}
+{{dddddd-- <a href="/BottomPrice/edit"><span class="fas fa-edit"></span></a> --}}
 @foreach($BottomPrices as $BottomPrice)
 
 <a href="{{route('BottomPrice.edit',$BottomPrice->id)}}"><span class="fas fa-edit"></span></a>
