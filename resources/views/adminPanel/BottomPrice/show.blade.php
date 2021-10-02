@@ -71,6 +71,7 @@
                         @endpermitTo
                         @permitTo('UpdateBottomPrice')
                         <th>Action</th>
+
                         @endpermitTo
 
                     </tr>
@@ -147,6 +148,7 @@ $(function() {
             @endpermitTo
             @permitTo('UpdateBottomPrice')
             { data: 'columnEdit', name: 'columnEdit' },
+            { data: 'deleteBottom', name: 'deleteBottom' },
             @endpermitTo
 
         ]

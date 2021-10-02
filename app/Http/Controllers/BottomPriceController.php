@@ -73,10 +73,6 @@ class BottomPriceController extends Controller
             })
 
 
-
-            // ->addColumn('columnEdit', '<a href="BottomPrice/edit"><span class="fas fa-edit"></span></a>')
-
-            // ->editColumn('columnEdit', 'adminPanel.BottomPrice.columnEdit')
             ->rawColumns(['columnEdit'])
 
 
