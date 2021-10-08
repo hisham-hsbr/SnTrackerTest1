@@ -90,8 +90,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'columnEdit',
-                        name: 'columnEdit'
+                        data: 'brandEdit',
+                        name: 'brandEdit'
                     },
                     // { data: 'SerialNumber', name: 'SerialNumber' },
                     // { data: 'date', name: 'date' },

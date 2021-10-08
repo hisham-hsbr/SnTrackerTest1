@@ -1,8 +1,8 @@
-{{-- <a href="/BottomPrice/edit"><span class="fas fa-edit"></span></a> --}}
-@foreach ($BottomPrices as $BottomPrice)
 
-    <a href="{{ route('BottomPrice.edit', $BottomPrice->id) }}"><span class="fas fa-edit"></span></a>
+  @foreach ($BottomPrices as $BottomPrice)
+<a href="{{ route('BottomPrice.edit', $BottomPrice->id) }}"><span class="fas fa-edit"></span></a>
 @endforeach
+{{-- <button class="btn btn-info btn-sm"> upda</button> --}}
 <a href="" style="color:red" onclick="
                         if(confirm('Are you sure, You Want to delete this?'))
                         {
@@ -14,4 +14,3 @@
                         }
                         "><span class="fas fa-trash-alt "></span></a>
 
-{{-- test FROM SHP --}}

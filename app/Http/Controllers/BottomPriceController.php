@@ -58,6 +58,9 @@ class BottomPriceController extends Controller
             ->setRowId(function ($BottomPrice) {
                 return $BottomPrice->id;
             })
+            ->editColumn('updated_at', function (BottomPrice $BottomPrice) {
+                return $BottomPrice->updated_at->diffForHumans();
+            })
 
             ->setRowData([
                 'data-rt' => 'SAR-{{$rt}}',
@@ -72,9 +75,12 @@ class BottomPriceController extends Controller
 
                 return '<a href="/admin/BottomPrice/id/edit"><span class="fas fa-edit"></span></a>'  . $BottomPrice->id;
             })
+            // ->addColumn('action2', 'adminPanel.BottomPrice.columnEdit')
+            ->addColumn('action2', 'adminPanel.BottomPrice.columnEdit')
 
 
-            ->rawColumns(['columnEdit'])
+            // ->rawColumns(['columnEdit'])
+            ->rawColumns(['columnEdit', 'action2'])
 
 
             ->toJson();
@@ -87,6 +93,12 @@ class BottomPriceController extends Controller
         //
         $BottomPrices = BottomPrice::paginate(15);
         return view('adminPanel.BottomPrice.show', compact('BottomPrices'));
+    }
+    public function act()
+    {
+        //
+        $BottomPrices = BottomPrice::all();
+        return view('adminPanel.BottomPrice.columnEdit', compact('BottomPrices'));
     }
 
     /**

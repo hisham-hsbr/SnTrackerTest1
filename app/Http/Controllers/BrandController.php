@@ -42,12 +42,12 @@ class BrandController extends Controller
                 return $Brand->id;
             })
 
-            ->addColumn('columnEdit', function (Brand $Brand) {
+            ->addColumn('brandEdit', function (Brand $Brand) {
                 // return '<a href="/Brand/edit"><span class="fas fa-edit"></span></a>', $Brand->id;
 
+                return    '<a href="{{route("brand.edit",$Brand->id)}}"></a>';
 
-
-                return '<a href="/admin/brand/id/edit"><span class="fas fa-edit"></span></a>'  . $Brand->id;
+                // return '<a href="/admin/brand/.($Brand->id)./edit"><span class="fas fa-edit"></span></a>'  . $Brand->id;
             })
 
 
@@ -55,7 +55,7 @@ class BrandController extends Controller
             // ->addColumn('columnEdit', '<a href="Brand/edit"><span class="fas fa-edit"></span></a>')
 
             // ->editColumn('columnEdit', 'adminPanel.Brand.columnEdit')
-            ->rawColumns(['columnEdit'])
+            ->rawColumns(['brandEdit'])
 
             ->toJson();
     }
