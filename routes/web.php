@@ -50,6 +50,7 @@ Route::get('Product', 'ProductController@getProducts')->name('get.Products');
 
 Route::get('BottomPrice', 'BottomPriceController@getBottomPrices')->name('get.BottomPrices');
 Route::get('Brand', 'BrandController@getbrands')->name('get.brands');
+
 Route::get('Division', 'DivisionController@getdivisions')->name('get.divisions');
 
 Route::get('BottomPrice/act', 'BottomPriceController@act')->name('admin.BottomPrice.act');

@@ -65,22 +65,21 @@ class BottomPriceController extends Controller
             ->setRowData([
                 'data-rt' => 'SAR-{{$rt}}',
             ])
-            // <a href="/BottomPrice/edit"><span class="fas fa-edit"></span></a>
+
 
 
             ->addColumn('columnEdit', function (BottomPrice $BottomPrice) {
-                // return '<a href="/BottomPrice/edit"><span class="fas fa-edit"></span></a>', $BottomPrice->id;
 
 
+                return '<a href="/admin/BottomPrice/'.$BottomPrice->id.'/edit"><span class="fas fa-edit"></span></a>'. $BottomPrice->id;
 
-                return '<a href="/admin/BottomPrice/id/edit"><span class="fas fa-edit"></span></a>'  . $BottomPrice->id;
             })
             // ->addColumn('action2', 'adminPanel.BottomPrice.columnEdit')
-            ->addColumn('action2', 'adminPanel.BottomPrice.columnEdit')
+            // ->addColumn('action2', 'adminPanel.BottomPrice.columnEdit')
 
 
             // ->rawColumns(['columnEdit'])
-            ->rawColumns(['columnEdit', 'action2'])
+            ->rawColumns(['columnEdit'])
 
 
             ->toJson();

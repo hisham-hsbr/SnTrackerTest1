@@ -42,11 +42,7 @@ class DivisionController extends Controller
             })
 
             ->addColumn('divisionEdit', function (Division $Division) {
-                // return '<a href="/Division/edit"><span class="fas fa-edit"></span></a>', $Division->id;
-
-                // return    '<a href="{{route("Division.edit",$Division->id)}}"></a>';
-
-                return '<a href="/admin/division/id/edit"><span class="fas fa-edit"></span></a>'  . $Division->id;
+                return '<a href="/admin/division/'.$Division->id.'/edit"><span class="fas fa-edit"></span></a>'. $Division->id;
             })
 
 

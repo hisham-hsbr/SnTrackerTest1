@@ -20,7 +20,7 @@ class CreateDivisionsTable extends Migration
             $table->string('slug');
             $table->text('body')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
