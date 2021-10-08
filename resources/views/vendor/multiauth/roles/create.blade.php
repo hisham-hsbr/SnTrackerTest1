@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-
+@section('pageTitle', 'Role - Create')
 @section('main-content')
 <div class="container">
 

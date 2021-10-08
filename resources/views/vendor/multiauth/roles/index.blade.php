@@ -1,4 +1,5 @@
 @extends('adminPanel.app')
+@section('pageTitle', 'Role')
 @section('head')
 
 <!-- DataTables -->

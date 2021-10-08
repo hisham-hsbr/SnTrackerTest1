@@ -45,9 +45,9 @@ class BrandController extends Controller
             ->addColumn('brandEdit', function (Brand $Brand) {
                 // return '<a href="/Brand/edit"><span class="fas fa-edit"></span></a>', $Brand->id;
 
-                return    '<a href="{{route("brand.edit",$Brand->id)}}"></a>';
+                // return    '<a href="{{route("brand.edit",$Brand->id)}}"></a>';
 
-                // return '<a href="/admin/brand/.($Brand->id)./edit"><span class="fas fa-edit"></span></a>'  . $Brand->id;
+                return '<a href="/admin/brand/id/edit"><span class="fas fa-edit"></span></a>'  . $Brand->id;
             })
 
 

@@ -141,6 +141,7 @@
                                                     {{ request()->is('admin/customer') ? 'menu-open' : '' }}
                                                     {{ request()->is('admin/supplier') ? 'menu-open' : '' }}
                                                     {{ request()->is('admin/brand') ? 'menu-open' : '' }}
+                                                    {{ request()->is('admin/division') ? 'menu-open' : '' }}
                                                     {{-- {{ (request()->is('admin/SerialNumber')) ? 'menu-open' : '' }} --}}
                                                     {{-- {{ (request()->is('admin/BottomPrice')) ? 'menu-open' : '' }} --}}
                                                     ">
@@ -179,6 +180,15 @@
                                     class="nav-link {{ request()->is('admin/brand') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Brand</p>
+                                </a>
+                            </li>
+                            @endpermitToParent
+                            @permitToParent('Division')
+                            <li class="nav-item">
+                                <a href="{{ route('division.index') }}"
+                                    class="nav-link {{ request()->is('admin/division') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Division</p>
                                 </a>
                             </li>
                             @endpermitToParent
