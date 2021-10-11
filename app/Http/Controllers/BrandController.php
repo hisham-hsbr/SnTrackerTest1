@@ -90,7 +90,7 @@ class BrandController extends Controller
             'code' => 'required|unique:brands',
             'name' => 'required',
             'slug' => 'required',
-            'body' => 'required',
+            // 'body' => 'required',
         ]);
         $brand = new Brand();
         $brand->code = $request->code;

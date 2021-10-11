@@ -86,7 +86,7 @@ class DivisionController extends Controller
             'code' => 'required|unique:divisions',
             'name' => 'required',
             'slug' => 'required',
-            'body' => 'required',
+            // 'body' => 'required',
         ]);
         $division = new Division();
         $division->code = $request->code;

@@ -222,16 +222,31 @@
 
             var rt=0;
             var x = Number($("#fb").val());
-            // var y = Number($("#sb").val());
-            // var y =2;
+
             var sb=x + 2;
             var tb=x + 4;
             var lb=x + 6;
-            var rt=x + 30;
+            var rp=(lb + 20);
+            var rt=((rp*15)/100)+rp;
 
             $('#sb').val(sb);
             $('#tb').val(tb);
             $('#lb').val(lb);
+            $('#rt').val(rt);
+
+        });
+        });
+        $(document).ready(function(){
+            // Get value on keyup funtion
+            $("#lb").change(function(){
+
+            var rt=0;
+            var y = Number($("#lb").val());
+
+            var rp=(y + 20);
+            var rt=((rp*15)/100)+rp;
+
+
             $('#rt').val(rt);
 
         });
