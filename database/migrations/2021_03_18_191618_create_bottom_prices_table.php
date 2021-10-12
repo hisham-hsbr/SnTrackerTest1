@@ -25,7 +25,7 @@ class CreateBottomPricesTable extends Migration
             $table->DECIMAL('tb', 15, 2);
             $table->DECIMAL('lb', 15, 2);
             $table->DECIMAL('rt', 15, 2);
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

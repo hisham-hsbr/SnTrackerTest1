@@ -36,6 +36,7 @@ Route::resource('admin/product', 'ProductController');
 Route::resource('admin/SerialNumber', 'SerialNumberController');
 Route::resource('admin/BottomPrice', 'BottomPriceController');
 Route::resource('admin/brand', 'BrandController');
+Route::resource('admin/division', 'DivisionController');
 
 
 Route::get('admin/BottomPrice/{BottomPrice}/edit', 'BottomPriceController@edit')->name('admin.BottomPrice.edit');
@@ -49,6 +50,10 @@ Route::get('Product', 'ProductController@getProducts')->name('get.Products');
 
 Route::get('BottomPrice', 'BottomPriceController@getBottomPrices')->name('get.BottomPrices');
 Route::get('Brand', 'BrandController@getbrands')->name('get.brands');
+
+Route::get('Division', 'DivisionController@getdivisions')->name('get.divisions');
+
+Route::get('BottomPrice/act', 'BottomPriceController@act')->name('admin.BottomPrice.act');
 
 
 

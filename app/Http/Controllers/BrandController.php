@@ -42,12 +42,11 @@ class BrandController extends Controller
                 return $Brand->id;
             })
 
-            ->addColumn('columnEdit', function (Brand $Brand) {
-                // return '<a href="/Brand/edit"><span class="fas fa-edit"></span></a>', $Brand->id;
+            ->addColumn('brandEdit', function (Brand $Brand) {
 
 
+                return '<a href="/admin/brand/'.$Brand->id.'/edit"><span class="fas fa-edit"></span></a>'. $Brand->id;
 
-                return '<a href="/admin/brand/id/edit"><span class="fas fa-edit"></span></a>'  . $Brand->id;
             })
 
 
@@ -55,7 +54,7 @@ class BrandController extends Controller
             // ->addColumn('columnEdit', '<a href="Brand/edit"><span class="fas fa-edit"></span></a>')
 
             // ->editColumn('columnEdit', 'adminPanel.Brand.columnEdit')
-            ->rawColumns(['columnEdit'])
+            ->rawColumns(['brandEdit'])
 
             ->toJson();
     }
@@ -91,7 +90,7 @@ class BrandController extends Controller
             'code' => 'required|unique:brands',
             'name' => 'required',
             'slug' => 'required',
-            'body' => 'required',
+            // 'body' => 'required',
         ]);
         $brand = new Brand();
         $brand->code = $request->code;

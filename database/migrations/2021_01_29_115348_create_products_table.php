@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->string('image')->nullable();
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

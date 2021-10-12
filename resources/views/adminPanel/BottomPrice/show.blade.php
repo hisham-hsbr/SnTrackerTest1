@@ -73,6 +73,8 @@
                         <th>Action</th>
 
                         @endpermitTo
+                        <th>updated_at</th>
+                        {{-- <th>Action2</th> --}}
 
                     </tr>
                 </thead>
@@ -150,6 +152,8 @@ $(function() {
             { data: 'columnEdit', name: 'columnEdit' },
             // { data: 'deleteBottom', name: 'deleteBottom' },
             @endpermitTo
+            { data: 'updated_at', name: 'updated_at' },
+            // { data: 'action2', name: 'action2' },
 
         ]
     });

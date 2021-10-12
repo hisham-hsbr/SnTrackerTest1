@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Brand')
+@section('pageTitle', 'Division')
 @section('head')
 
     <!-- DataTables -->
@@ -11,15 +11,13 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Prodect List
-                @permitTo('CreateBrand')
+                Division List
+                @permitTo('CreateDivision')
                 <span class="float-right">
-                    <a href="{{ route('brand.create') }}" class="btn btn-sm btn-success ml-1 ">New brand</a>
+                    <a href="{{ route('division.create') }}" class="btn btn-sm btn-success ml-1 ">New Division</a>
                 </span>
                 @endpermitTo
-                <span class="float-right">
-                    <a href="" class="btn btn-sm btn-success toastrDefaultSuccess">New</a>
-                </span>
+
             </div>
 
             <div class="card-body">
@@ -31,7 +29,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Code#</th>
-                                <th>Brand</th>
+                                <th>Division</th>
                                 <th>Action</th>
                                 <!-- <th>Serial Number</th>
                                                                                             <th>date</th> -->
@@ -76,7 +74,7 @@
             $('#example3').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('get.brands') !!}',
+                ajax: '{!! route('get.divisions') !!}',
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -90,8 +88,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'brandEdit',
-                        name: 'brandEdit'
+                        data: 'divisionEdit',
+                        name: 'divisionEdit'
                     },
                     // { data: 'SerialNumber', name: 'SerialNumber' },
                     // { data: 'date', name: 'date' },
