@@ -71,6 +71,7 @@
                         @endpermitTo
                         @permitTo('UpdateBottomPrice')
                         <th>Action</th>
+                        {{-- <th></th> --}}
 
                         @endpermitTo
                         <th>updated_at</th>
@@ -150,7 +151,7 @@ $(function() {
             @endpermitTo
             @permitTo('UpdateBottomPrice')
             { data: 'columnEdit', name: 'columnEdit' },
-            // { data: 'deleteBottom', name: 'deleteBottom' },
+            // { data: 'columnDelete', name: 'columnDelete' },
             @endpermitTo
             { data: 'updated_at', name: 'updated_at' },
             // { data: 'action2', name: 'action2' },

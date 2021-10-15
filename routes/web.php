@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', function () {
     return view('userPanel/home');
 });
+
 // Route::get('/adminpanel2', function () {
 //     return view('adminPanel/home2');
 // });
@@ -54,6 +55,10 @@ Route::get('Brand', 'BrandController@getbrands')->name('get.brands');
 Route::get('Division', 'DivisionController@getdivisions')->name('get.divisions');
 
 Route::get('BottomPrice/act', 'BottomPriceController@act')->name('admin.BottomPrice.act');
+
+
+
+
 
 
 

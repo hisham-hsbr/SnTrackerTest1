@@ -25,7 +25,12 @@ class CreateBottomPricesTable extends Migration
             $table->DECIMAL('tb', 15, 2);
             $table->DECIMAL('lb', 15, 2);
             $table->DECIMAL('rt', 15, 2);
+
+            $table->integer('division_id')->unsigned()->index();
+
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->boolean('status')->default(true);
+
             $table->timestamps();
         });
     }

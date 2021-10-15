@@ -34,4 +34,5 @@ class CreateDivisionsTable extends Migration
     {
         Schema::dropIfExists('divisions');
     }
+    
 }

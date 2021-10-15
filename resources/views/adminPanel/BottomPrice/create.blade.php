@@ -68,28 +68,19 @@
                                                     <input type="text" class="form-control" name="model" id="Model" style="text-transform: uppercase" value="{{old('model')}}" placeholder="Enter Model" />
                                                 </div>
                                             </div>
+                                            
                                             <div class="col-lg-4">
+                                                <div class="form-group">
+                                                  <label>Division</label>
+                                                  <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
+                                                    <option selected="selected">{{old('division')}}</option>
+                                                    @foreach($Divisions as $Division)
+                                                    <option value="{{$Division->id}}">{{$Division->name}}</option>
+                                                    @endforeach
 
-
-
-                                                    <div class="form-group">
-                                                      <label>Division</label>
-                                                      <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
-                                                        <option selected="selected">{{old('division')}}</option>
-                                                        <option>ACCESSORIES</option>
-                                                        <option>COMPUTER</option>
-                                                        <option>COMPUTER ACCESSORIES</option>
-                                                        <option>ELECTRONICS</option>
-                                                        <option>LAPTOP & PC</option>
-                                                        <option>LAPTOP SPARES</option>
-                                                        <option>MULTIMEDIA</option>
-                                                        <option>PHONES</option>
-                                                        <option>SPARES</option>
-                                                        <option>TABLET PC</option>
-                                                      </select>
-                                                    </div>
+                                                  </select>
+                                                </div>
                                             </div>
-
 
                                             {{-- <div class="form-group">
                                                 <label>Brand</label>
@@ -112,7 +103,7 @@
 
                                                   </select>
                                                 </div>
-                                        </div>
+                                            </div>
                                             <div class="col-lg-2">
                                                 <div class="form-group">
                                                     <label for="fb">FB</label>
