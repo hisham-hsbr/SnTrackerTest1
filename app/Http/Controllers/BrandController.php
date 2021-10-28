@@ -45,7 +45,7 @@ class BrandController extends Controller
             ->addColumn('brandEdit', function (Brand $Brand) {
 
 
-                return '<a href="/admin/brand/'.$Brand->id.'/edit"><span class="fas fa-edit"></span></a>'. $Brand->id;
+                return '<a href="/admin/brand/'.$Brand->id.'/edit"><span class="fas fa-edit"></span></a>';
 
             })
 
@@ -140,7 +140,7 @@ class BrandController extends Controller
         //
 
         $this->validate($request, [
-            'code' => 'required|unique:brands',
+            'code' => "required|unique:brands,code,$id",
             'name' => 'required',
             'slug' => 'required',
             // 'body' => 'required',

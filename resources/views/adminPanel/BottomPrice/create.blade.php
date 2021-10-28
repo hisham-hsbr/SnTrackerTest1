@@ -82,15 +82,6 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="form-group">
-                                                <label>Brand</label>
-                                                <select class="select2" multiple="multiple" data-placeholder="Select a Brand" style="width: 100%;" name="Brands[]">
-                                                    @foreach($Brands as $Brand)
-                                                    <option value="{{$Brand->id}}">{{$Brand->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div> --}}
-
 
                                             <div class="col-lg-4">
                                                 <div class="form-group">
@@ -104,6 +95,8 @@
                                                   </select>
                                                 </div>
                                             </div>
+
+
                                             <div class="col-lg-2">
                                                 <div class="form-group">
                                                     <label for="fb">FB</label>

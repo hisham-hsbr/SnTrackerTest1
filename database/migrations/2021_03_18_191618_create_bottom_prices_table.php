@@ -17,13 +17,13 @@ class CreateBottomPricesTable extends Migration
             $table->id();
             $table->text('code');
             $table->text('name');
+
             $table->text('model');
             $table->integer('division_id')->unsigned()->index();
-
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->integer('brand_id')->unsigned()->index();
-
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
             $table->DECIMAL('fb', 15, 2);
             $table->DECIMAL('sb', 15, 2);
             $table->DECIMAL('tb', 15, 2);
@@ -32,7 +32,7 @@ class CreateBottomPricesTable extends Migration
 
 
 
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
 
             $table->timestamps();
         });

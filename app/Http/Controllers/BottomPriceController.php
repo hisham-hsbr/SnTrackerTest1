@@ -39,9 +39,8 @@ class BottomPriceController extends Controller
         $Divisions = Division::all();
 
 
-        // return Datatables::of(BottomPrice::query())->make(true);
+        // return Datatables::of(BottomPrice::where('status', 1))
         return Datatables::of(BottomPrice::query())
-
 
             ->editColumn('code', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->code);
@@ -76,27 +75,10 @@ class BottomPriceController extends Controller
 
             ->addColumn('columnEdit', function (BottomPrice $BottomPrice) {
 
-
-                // return '<a href="/admin/BottomPrice/'.$BottomPrice->id.'/edit"><span class="fas fa-edit"></span></a>'. $BottomPrice->id;
                 return '<a href="/admin/BottomPrice/'.$BottomPrice->id.'/edit"><span class="fas fa-edit"></span></a>';
 
             })
-            // ->addColumn('columnDelete',function (BottomPrice $BottomPrice) {
-            //         return '<form id="delete-form-{{ $BottomPrice->id }}" method="post"
-            //         action="{{ route("BottomPrice.destroy",'. $BottomPrice->id.') }}" style="display:none">
-            //         {{ csrf_field() }}
-            //         {{ method_field("DELETE") }}
-            //     </form>
-            //     <a href="" onclick="
-            // if(confirm("Are you sure, You Want to delete this?"))
-            // {
-            //     event.preventDefault();
-            //     document.getElementById('.'delete-form-{{ $BottomPrice->id }}'.').submit();
-            // }
-            // else{
-            //     event.preventDefault();
-            // }
-            // "><span class="fas fa-trash-alt"></span></a>';
+
 
 
             ->rawColumns(['columnEdit'])
@@ -113,7 +95,9 @@ class BottomPriceController extends Controller
     public function index()
     {
         //
-        $BottomPrices = BottomPrice::paginate(15);
+        $BottomPrices = BottomPrice::where('status', 1)->paginate(15);
+        // $BottomPrices = BottomPrice::where('status', 1)->orderBy('created_at', 'DESC')->paginate(15);
+        // $BottomPrices = BottomPrice::paginate(15);
         $Brands = Brand::all();
         $Divisions = Division::all();
         return view('adminPanel.BottomPrice.show', compact('BottomPrices','Brands','Divisions'));
@@ -174,7 +158,7 @@ class BottomPriceController extends Controller
         // $BottomPrice->rt = $request->rt;
         // $BottomPrice->save();
         // return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice Created Successfully');
-
+        // dd($request->all());
         switch ($request->submitbutton) {
 
             case 'save':
@@ -236,6 +220,7 @@ class BottomPriceController extends Controller
                 $BottomPrice->tb = $request->tb;
                 $BottomPrice->lb = $request->lb;
                 $BottomPrice->rt = $request->rt;
+                $BottomPrice->status = $request->status;
                 $BottomPrice->save();
                 return redirect(route('BottomPrice.create'))->with('message_store', 'BottomPrice Created Successfully');
                 break;
@@ -296,6 +281,7 @@ class BottomPriceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // dd($request->all());
         $this->validate($request, [
             'code' => 'required',
             'name' => 'required',
@@ -320,6 +306,7 @@ class BottomPriceController extends Controller
         $BottomPrice->tb = $request->tb;
         $BottomPrice->lb = $request->lb;
         $BottomPrice->rt = $request->rt;
+        $BottomPrice->status = $request->status;
         $BottomPrice->save();
         return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice updated Successfully');
     }

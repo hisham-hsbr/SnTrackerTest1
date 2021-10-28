@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
+use App\Division;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -56,7 +58,11 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('adminPanel.products.create');
+        $Brands = Brand::all();
+        $Divisions = Division::all();
+
+
+        return view('adminPanel.products.create', compact('Brands','Divisions'));
     }
 
     /**
@@ -73,13 +79,20 @@ class ProductController extends Controller
             'code' => 'required|unique:products',
             'name' => 'required',
             'slug' => 'required',
-            'body' => 'required',
+            'model' => 'required',
+            'division' => 'required',
+            'brand' => 'required',
+            // 'body' => 'required',
         ]);
         $product = new product();
         $product->code = $request->code;
         $product->name = $request->name;
         $product->slug = $request->slug;
+        $product->model = $request->model;
+        $product->division_id = $request->division;
+        $product->brand_id = $request->brand;
         $product->body = $request->body;
+        $product->status = $request->status;
         $product->save();
         return redirect(route('product.index'))->with('message_store', 'product Created Successfully');
     }

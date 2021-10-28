@@ -49,37 +49,87 @@
                                     {{csrf_field()}}
                                     <div class="card-body">
                                         <div class="row">
-                                        <div class="col-lg-4">
-                                        </div>
+
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="title">Code</label>
                                                     <input type="text" class="form-control" name="code" id="title" value="{{old('code')}}" placeholder="Enter Code" />
                                                 </div>
+                                            </div>
+
+
+                                            <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="subtitle">Product</label>
                                                     <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="Enter Product" />
                                                 </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="subtitle">Model</label>
+                                                    <input type="text" class="form-control" name="model" id="model" value="{{old('model')}}" placeholder="Enter Model" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="slug">Slug</label>
                                                     <input type="text" class="form-control" readonly name="slug" id="slug" value="{{old('slug')}}" placeholder="Slug" />
                                                 </div>
+                                                </div>
+
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                      <label>Division</label>
+                                                      <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
+                                                        <option selected="selected">{{old('division')}}</option>
+                                                        @foreach($Divisions as $Division)
+                                                        <option value="{{$Division->id}}">{{$Division->name}}</option>
+                                                        @endforeach
+
+                                                      </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                      <label>Brand</label>
+                                                      <select class="form-control select2" style="width: 100%;" name="brand" id="brand" style="text-transform: uppercase" >
+                                                        <option selected="selected">{{old('brand')}}</option>
+                                                        @foreach($Brands as $Brand)
+                                                        <option value="{{$Brand->id}}">{{$Brand->name}}</option>
+                                                        @endforeach
+
+                                                      </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <label for="subtitle">Remarks</label>
                                                     <input type="text" class="form-control" name="body" id="body" value="{{old('body')}}" placeholder="Enter Remarks" />
                                                 </div>
-                                                <div class="form-check">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    {{-- div --}}
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    {{-- div --}}
+                                                </div>
+                                                <div class="col-lg-4">
+                                                <div class="form-group pl-5">
                                                     <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
                                                     <label class="form-check-label" for="status">Active</label>
+                                                </div>
                                                 </div>
                                             </div>
 
                                         </div>
 
-                                        <div class="col-lg-4">
 
-                                            <!-- /.col-->
-                                        </div>
                                         <div class="card-footer">
                                             @permitTo('CreateProduct')
                                             <button type="submit" class="btn btn-primary">Submit</button>

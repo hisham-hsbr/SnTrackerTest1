@@ -18,9 +18,15 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug');
-            $table->text('body');
+            $table->text('model');
+            $table->integer('division_id')->unsigned()->index();
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
+            $table->integer('brand_id')->unsigned()->index();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            $table->text('body')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
