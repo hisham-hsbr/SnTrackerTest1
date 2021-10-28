@@ -68,7 +68,7 @@
                                                     <input type="text" class="form-control" name="model" id="Model" style="text-transform: uppercase" value="{{old('model')}}" placeholder="Enter Model" />
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-lg-4">
                                                 <div class="form-group">
                                                   <label>Division</label>

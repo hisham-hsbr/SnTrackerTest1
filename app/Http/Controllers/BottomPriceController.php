@@ -36,6 +36,9 @@ class BottomPriceController extends Controller
 
     public function getBottomPrices()
     {
+        $Divisions = Division::all();
+
+
         // return Datatables::of(BottomPrice::query())->make(true);
         return Datatables::of(BottomPrice::query())
 
@@ -46,15 +49,17 @@ class BottomPriceController extends Controller
 
             ->editColumn('name', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->name);
+
             })
             ->editColumn('model', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->model);
             })
             ->editColumn('division', function (BottomPrice $BottomPrice) {
-                return strtoupper($BottomPrice->division);
+
+                return strtoupper($BottomPrice->Divisions->name);
             })
             ->editColumn('brand', function (BottomPrice $BottomPrice) {
-                return strtoupper($BottomPrice->brand);
+                return strtoupper($BottomPrice->Brands->name);
             })
             ->setRowId(function ($BottomPrice) {
                 return $BottomPrice->id;
@@ -192,9 +197,8 @@ class BottomPriceController extends Controller
                 $BottomPrice->code = $request->code;
                 $BottomPrice->name = $request->name;
                 $BottomPrice->model = $request->model;
-                $BottomPrice->division = $request->division;
                 $BottomPrice->division_id = $request->division;
-                $BottomPrice->brand = $request->brand;
+                $BottomPrice->brand_id = $request->brand;
                 $BottomPrice->fb = $request->fb;
                 $BottomPrice->sb = $request->sb;
                 $BottomPrice->tb = $request->tb;
@@ -225,8 +229,8 @@ class BottomPriceController extends Controller
                 $BottomPrice->code = $request->code;
                 $BottomPrice->name = $request->name;
                 $BottomPrice->model = $request->model;
-                $BottomPrice->division = $request->division;
-                $BottomPrice->brand = $request->brand;
+                $BottomPrice->division_id = $request->division;
+                $BottomPrice->brand_id = $request->brand;
                 $BottomPrice->fb = $request->fb;
                 $BottomPrice->sb = $request->sb;
                 $BottomPrice->tb = $request->tb;
@@ -273,11 +277,13 @@ class BottomPriceController extends Controller
     public function edit($id)
     {
         //
+        $Brands = Brand::all();
+        $Divisions = Division::all();
         $BottomPrice = BottomPrice::where('id', $id)->first();
         // return view('adminPanel.BottomPrice.edit', compact('BottomPrice'));
 
         // $BottomPrice = BottomPrice::all();
-        return view('adminPanel.BottomPrice.edit', compact('BottomPrice'));
+        return view('adminPanel.BottomPrice.edit', compact('BottomPrice','Brands','Divisions'));
     }
 
     /**
@@ -307,8 +313,8 @@ class BottomPriceController extends Controller
         $BottomPrice->code = $request->code;
         $BottomPrice->name = $request->name;
         $BottomPrice->model = $request->model;
-        $BottomPrice->division = $request->division;
-        $BottomPrice->brand = $request->brand;
+        $BottomPrice->division_id = $request->division;
+        $BottomPrice->brand_id = $request->brand;
         $BottomPrice->fb = $request->fb;
         $BottomPrice->sb = $request->sb;
         $BottomPrice->tb = $request->tb;
