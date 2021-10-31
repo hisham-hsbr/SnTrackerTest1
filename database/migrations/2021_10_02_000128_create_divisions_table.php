@@ -20,7 +20,7 @@ class CreateDivisionsTable extends Migration
             $table->string('slug');
             $table->text('body')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -34,5 +34,5 @@ class CreateDivisionsTable extends Migration
     {
         Schema::dropIfExists('divisions');
     }
-    
+
 }

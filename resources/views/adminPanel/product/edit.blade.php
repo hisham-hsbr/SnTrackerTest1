@@ -1,16 +1,16 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Division - Create')
+@section('pageTitle', 'Product - Edit')
 @section('main-content')
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            @include('multiauth::message')
+            {{-- @include('multiauth::message') --}}
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Division Creation</h5>
+                            <h5 class="card-title">Product Edit</h5>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -45,34 +45,34 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
                                     </div>
-                                    <form role="form" action="{{ route('division.store') }}" method="post"
+                                    <form role="form" action="{{ route('product.update', $Product->id) }}" method="post"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-lg-4">
-                                                </div>
+
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="title">Code</label>
                                                         <input type="text" class="form-control" name="code" id="title"
-                                                            value="{{ old('code') }}" placeholder="Enter Code" />
+                                                            style="text-transform: uppercase" value="{{ $Product->code }}"
+                                                            placeholder="Enter Code" />
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-8">
                                                     <div class="form-group">
-                                                        <label for="subtitle">Division</label>
+                                                        <label for="subtitle">Product Name</label>
                                                         <input type="text" class="form-control" name="name" id="name"
-                                                            value="{{ old('name') }}" placeholder="Enter Division" />
+                                                            style="text-transform: uppercase" value="{{ $Product->name }}"
+                                                            placeholder="Enter Product Name" />
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="slug">Slug</label>
-                                                        <input type="text" class="form-control" readonly name="slug"
-                                                            id="slug" value="{{ old('slug') }}" placeholder="Slug" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="subtitle">Remarks</label>
-                                                        <input type="text" class="form-control" name="body" id="body"
-                                                            value="{{ old('body') }}" placeholder="Enter Remarks" />
-                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="col-lg-8">
                                                     <div class="form-check">
                                                         <input type="checkbox" class="form-check-input" name="status"
                                                             value="1" id="status" />
@@ -80,19 +80,14 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
 
-                                            <div class="col-lg-4">
-
-                                                <!-- /.col-->
-                                            </div>
-                                            <div class="card-footer">
-                                                @permitTo('CreateDivision')
-                                                <button type="submit" class="btn btn-success" value="save" name="submitbutton">Submit</button>
-                                            <button type="submit" class="btn btn-primary" value="save and new" name="submitbutton">Submit And Create</button>
-                                                @endpermitTo
-                                                <a type="button" href="{{ route('division.index') }}"
-                                                    class="btn btn-warning">Back</a>
+                                                <div class="card-footer">
+                                                    @permitTo('UpdateProduct')
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                    @endpermitTo
+                                                    <a type="button" href="{{ route('product.index') }}"
+                                                        class="btn btn-warning">Back</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -179,11 +174,14 @@
                 .replace(/-+$/, '') // Trim - from end of text
         }
     </script>
+    @if ($errors->count() > 0)
+        @foreach ($errors->all() as $error)
 
-
-
-
-
+            <script>
+                toastr.error("{{ $error }}");
+            </script>
+        @endforeach
+    @endif
 
 
 

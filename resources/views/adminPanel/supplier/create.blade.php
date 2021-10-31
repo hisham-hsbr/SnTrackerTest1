@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Division - Create')
+@section('pageTitle', 'Supplier - Create')
 @section('main-content')
     <!-- Main content -->
     <section class="content">
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Division Creation</h5>
+                            <h5 class="card-title">Supplier Creation</h5>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -45,7 +45,7 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
                                     </div>
-                                    <form role="form" action="{{ route('division.store') }}" method="post"
+                                    <form role="form" action="{{ route('supplier.store') }}" method="post"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="card-body">
@@ -59,9 +59,9 @@
                                                             value="{{ old('code') }}" placeholder="Enter Code" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="subtitle">Division</label>
+                                                        <label for="subtitle">Supplier</label>
                                                         <input type="text" class="form-control" name="name" id="name"
-                                                            value="{{ old('name') }}" placeholder="Enter Division" />
+                                                            value="{{ old('name') }}" placeholder="Enter Supplier" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="slug">Slug</label>
@@ -87,11 +87,10 @@
                                                 <!-- /.col-->
                                             </div>
                                             <div class="card-footer">
-                                                @permitTo('CreateDivision')
-                                                <button type="submit" class="btn btn-success" value="save" name="submitbutton">Submit</button>
-                                            <button type="submit" class="btn btn-primary" value="save and new" name="submitbutton">Submit And Create</button>
+                                                @permitTo('CreateSupplier')
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                                 @endpermitTo
-                                                <a type="button" href="{{ route('division.index') }}"
+                                                <a type="button" href="{{ route('supplier.index') }}"
                                                     class="btn btn-warning">Back</a>
                                             </div>
                                         </div>

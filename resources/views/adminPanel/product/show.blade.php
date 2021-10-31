@@ -29,6 +29,12 @@
                         <th style="width: 10px">#</th>
                         <th>code#</th>
                         <th>Product</th>
+                        <th>Model</th>
+                        <th>Division</th>
+                        <th>Brand</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
                         <!-- <th>Serial Number</th>
                         <th>date</th> -->
 
@@ -76,6 +82,17 @@ $(function() {
             { data: 'id', name: 'id' },
             { data: 'code', name: 'code' },
             { data: 'name', name: 'name' },
+            { data: 'model', name: 'model' },
+            { data: 'division', name: 'division' },
+            { data: 'brand', name: 'brand' },
+
+
+
+            { data: 'status', name: 'status' },
+            @permitTo('UpdateProduct')
+            { data: 'Edit', name: 'Edit' },
+            // { data: 'columnDelete', name: 'columnDelete' },
+            @endpermitTo
             // { data: 'SerialNumber', name: 'SerialNumber' },
             // { data: 'date', name: 'date' },
 

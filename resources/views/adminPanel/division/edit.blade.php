@@ -88,7 +88,7 @@
                                                 <div class="col-lg-8">
                                                     <div class="form-check">
                                                         <input type="checkbox" class="form-check-input" name="status"
-                                                            value="1" id="status" />
+                                                            value="1" id="status" @if($Division->status==1){{'checked'}} @endif />
                                                         <label class="form-check-label" for="status">Active</label>
                                                     </div>
                                                 </div>

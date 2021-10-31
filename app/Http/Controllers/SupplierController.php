@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Supplier;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class SupplierController extends Controller
 {
@@ -12,9 +13,53 @@ class SupplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        // $this->middleware('permitTo:CreateSupplier', ['only' => 'create']);
+        // $this->middleware('role:super');
+        // $this->roleModel        = config('multiauth.models.role');
+        // $this->adminModel       = config('multiauth.models.admin');
+        // $this->permissionModel  = config('multiauth.models.permission');
+    }
+
+    public function getSuppliers()
+    {
+         // return Datatables::of(Supplier::query())->make(true);
+         return DataTables::of(Supplier::query())
+
+         ->editColumn('code', function (Supplier $Supplier) {
+             return strtoupper($Supplier->code);
+         })
+
+
+         ->editColumn('name', function (Supplier $Supplier) {
+             return strtoupper($Supplier->name);
+         })
+
+         ->setRowId(function ($Supplier) {
+             return $Supplier->id;
+         })
+
+         ->addColumn('supplierEdit', function (Supplier $Supplier) {
+             return '<a href="/admin/supplier/'.$Supplier->id.'/edit"><span class="fas fa-edit"></span></a>'. $Supplier->id;
+         })
+
+
+
+         // ->addColumn('columnEdit', '<a href="Supplier/edit"><span class="fas fa-edit"></span></a>')
+
+         // ->editColumn('columnEdit', 'adminPanel.Supplier.columnEdit')
+         ->rawColumns(['supplierEdit'])
+
+         ->toJson();
+    }
     public function index()
     {
         //
+        $supplier = supplier::all();
+        return view('adminPanel.supplier.show', compact('supplier'));
+
     }
 
     /**
@@ -25,6 +70,7 @@ class SupplierController extends Controller
     public function create()
     {
         //
+        return view('adminPanel.supplier.create');
     }
 
     /**
@@ -36,6 +82,7 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**

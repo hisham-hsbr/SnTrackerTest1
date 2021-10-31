@@ -1,63 +1,58 @@
-@extends('adminPanel.app')
+<div class="container">
+    <div class="row product_data">
 
-@section('main-content')
-<!-- Main content -->
-<section class="content">
-    <div class="container-fluid">
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Monthly Recap Report</h5>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fas fa-wrench"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <a href="#" class="dropdown-item">Action</a>
-                                    <a href="#" class="dropdown-item">Another action</a>
-                                    <a href="#" class="dropdown-item">Something else here</a>
-                                    <a class="dropdown-divider"></a>
-                                    <a href="#" class="dropdown-item">Separated link</a>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <div class="row">
-
-
-                            <h1>Admin Home</h1>
-
-
-
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- ./card-body -->
-
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
+        <div class="col-md-4">
+            <img src="{{ asset('products/image-1.jpg') }}" class="w-100" alt="Product 1">
+            <h4>Product 1</h4>
+            <input type="hidden" class="product_id" value="1"> <!-- Your Product ID -->
+            <input type="text" class="qty-input" value="2"> <!-- Your Number of Quantity -->
+            <button type="button" class="add-to-cart-btn btn btn-primary">Add to Cart</button>
         </div>
-        <!-- /.row -->
-
+        <div class="col-md-4">
+            <img src="{{ asset('products/image-2.jpg') }}" class="w-100" alt="Product 2">
+            <h4>Product 1</h4>
+            <input type="hidden" class="product_id" value="2"> <!-- Your Product ID -->
+            <input type="text" class="qty-input" value="2"> <!-- Your Number of Quantity -->
+            <button type="button" class="add-to-cart-btn btn btn-primary">Add to Cart</button>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ asset('products/image-3.jpg') }}" class="w-100" alt="Product 3">
+            <h4>Product 1</h4>
+            <input type="hidden" class="product_id" value="3"> <!-- Your Product ID -->
+            <input type="text" class="qty-input" value="1"> <!-- Your Number of Quantity -->
+            <button type="button" class="add-to-cart-btn btn btn-primary">Add to Cart</button>
+        </div>
 
     </div>
-    <!--/. container-fluid -->
-</section>
-<!-- /.content -->
+</div>
+<script>
+     $(document).ready(function () {
+        $('.add-to-cart-btn').click(function (e) {
+            e.preventDefault();
 
-@endsection
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var quantity = $(this).closest('.product_data').find('.qty-input').val();
+
+            $.ajax({
+                url: "/add-to-cart",
+                method: "POST",
+                data: {
+                    'quantity': quantity,
+                    'product_id': product_id,
+                },
+                success: function (response) {
+                    alertify.set('notifier','position','top-right');
+                    alertify.success(response.status);
+                },
+            });
+        });
+    });
+</script>
+
+

@@ -41,7 +41,7 @@ class BottomPriceController extends Controller
 
         // return Datatables::of(BottomPrice::where('status', 1))
         return Datatables::of(BottomPrice::query())
-
+        
             ->editColumn('code', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->code);
             })
@@ -132,32 +132,6 @@ class BottomPriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $this->validate($request, [
-        //     'code' => 'required',
-        //     'name' => 'required',
-        //     'model' => 'required',
-        //     'division' => 'required',
-        //     'brand' => 'required',
-        //     'fb' => 'required',
-        //     'sb' => 'required',
-        //     'tb' => 'required',
-        //     'lb' => 'required',
-        //     'rt' => 'required',
-        // ]);
-        // $BottomPrice = new BottomPrice();
-        // $BottomPrice->code = $request->code;
-        // $BottomPrice->name = $request->name;
-        // $BottomPrice->model = $request->model;
-        // $BottomPrice->division = $request->division;
-        // $BottomPrice->brand = $request->brand;
-        // $BottomPrice->fb = $request->fb;
-        // $BottomPrice->sb = $request->sb;
-        // $BottomPrice->tb = $request->tb;
-        // $BottomPrice->lb = $request->lb;
-        // $BottomPrice->rt = $request->rt;
-        // $BottomPrice->save();
-        // return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice Created Successfully');
         // dd($request->all());
         switch ($request->submitbutton) {
 
@@ -188,6 +162,12 @@ class BottomPriceController extends Controller
                 $BottomPrice->tb = $request->tb;
                 $BottomPrice->lb = $request->lb;
                 $BottomPrice->rt = $request->rt;
+                if ($request->status=0)
+                {
+                    $BottomPrice->status=0;
+                }
+
+                $BottomPrice->status = $request->status;
                 $BottomPrice->save();
                 // $BottomPrice->divisions()->save($request->division);
                 return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice Created Successfully');
@@ -220,6 +200,10 @@ class BottomPriceController extends Controller
                 $BottomPrice->tb = $request->tb;
                 $BottomPrice->lb = $request->lb;
                 $BottomPrice->rt = $request->rt;
+                if ($request->status=0)
+                {
+                    $BottomPrice->status=0;
+                }
                 $BottomPrice->status = $request->status;
                 $BottomPrice->save();
                 return redirect(route('BottomPrice.create'))->with('message_store', 'BottomPrice Created Successfully');
@@ -306,6 +290,12 @@ class BottomPriceController extends Controller
         $BottomPrice->tb = $request->tb;
         $BottomPrice->lb = $request->lb;
         $BottomPrice->rt = $request->rt;
+
+        if ($request->status=0)
+        {
+            $BottomPrice->status=0;
+        }
+
         $BottomPrice->status = $request->status;
         $BottomPrice->save();
         return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice updated Successfully');

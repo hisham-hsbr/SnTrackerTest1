@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/soon', function () {
+    return view('adminPanel/soon');
+});
 
 Auth::routes();
 
@@ -38,9 +41,11 @@ Route::resource('admin/SerialNumber', 'SerialNumberController');
 Route::resource('admin/BottomPrice', 'BottomPriceController');
 Route::resource('admin/brand', 'BrandController');
 Route::resource('admin/division', 'DivisionController');
+Route::resource('admin/supplier', 'SupplierController');
 
 
 Route::get('admin/BottomPrice/{BottomPrice}/edit', 'BottomPriceController@edit')->name('admin.BottomPrice.edit');
+Route::get('admin/Product/{Product}/edit', 'ProductController@edit')->name('admin.Product.edit');
 
 // Route::resource('admin/BottomPrice', 'BottomPriceController');
 // Route::resource('admin/SerialNumber{id}', 'SerialNumberController');
@@ -48,6 +53,7 @@ Route::get('admin/BottomPrice/{BottomPrice}/edit', 'BottomPriceController@edit')
 Route::get('SerialNumber', 'SerialNumberController@getSerialNumbers')->name('get.SerialNumbers');
 
 Route::get('Product', 'ProductController@getProducts')->name('get.Products');
+Route::get('Supplier', 'SupplierController@getsuppliers')->name('get.suppliers');
 
 Route::get('BottomPrice', 'BottomPriceController@getBottomPrices')->name('get.BottomPrices');
 Route::get('Brand', 'BrandController@getbrands')->name('get.brands');

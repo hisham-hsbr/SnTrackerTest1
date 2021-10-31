@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     public function getProducts()
     {
+
         // return Datatables::of(Product::query())->make(true);
         return Datatables::of(Product::query())
 
@@ -38,6 +39,47 @@ class ProductController extends Controller
             ->editColumn('name', function (Product $Product) {
                 return strtoupper($Product->name);
             })
+            ->editColumn('model', function (Product $Product) {
+                return strtoupper($Product->model);
+            })
+
+            ->editColumn('division', function (Product $Product) {
+
+                return strtoupper($Product->Divisions->name);
+            })
+            ->editColumn('brand', function (Product $Product) {
+                return strtoupper($Product->Brands->name);
+            })
+
+
+            ->editColumn('status', function (Product $Product) {
+
+                $active = ($Product->status);
+                if($active==1){
+                 $active = 'Active';
+                }
+                else {
+                $active = 'InActive';
+                }
+                return $active;
+
+                // return strtoupper($Product->status);
+            })
+
+
+
+
+            ->addColumn('Edit', function (Product $Product) {
+
+                return '<a href="/admin/Product/'.$Product->id.'/edit"><span class="fas fa-edit"></span></a>';
+
+            })
+
+
+
+            ->rawColumns(['Edit'])
+
+
             ->toJson();
     }
 
@@ -46,8 +88,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        return view('adminPanel.products.show', compact('products'));
+        $Products = Product::all();
+        $Brands = Brand::all();
+        $Divisions = Division::all();
+
+        return view('adminPanel.product.show', compact('Products','Brands','Divisions'));
     }
 
     /**
@@ -62,7 +107,7 @@ class ProductController extends Controller
         $Divisions = Division::all();
 
 
-        return view('adminPanel.products.create', compact('Brands','Divisions'));
+        return view('adminPanel.product.create', compact('Brands','Divisions'));
     }
 
     /**
@@ -92,6 +137,10 @@ class ProductController extends Controller
         $product->division_id = $request->division;
         $product->brand_id = $request->brand;
         $product->body = $request->body;
+        if ($request->status=0)
+        {
+            $BottomPrice->status=0;
+        }
         $product->status = $request->status;
         $product->save();
         return redirect(route('product.index'))->with('message_store', 'product Created Successfully');
@@ -114,9 +163,20 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
+
+        $Product = Product::where('id', $id)->first();
+        $Brands = Brand::all();
+        $Divisions = Division::all();
+
+        return view('adminPanel.product.edit', compact('Product','Brands','Divisions'));
+
+        // $Brands = Brand::all();
+        // $Divisions = Division::all();
+        // $Products = Product::where('id', $id)->first();
+        // return view('adminPanel.Product.edit', compact('Products','Brands','Divisions'));
     }
 
     /**
@@ -126,9 +186,35 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'code' => 'required|unique:products',
+            'name' => 'required',
+            'slug' => 'required',
+            'model' => 'required',
+            'division' => 'required',
+            'brand' => 'required',
+            // 'body' => 'required',
+        ]);
+        $Product = Product::find($id);
+
+        $Product->code = $request->code;
+        $Product->name = $request->name;
+        $Product->model = $request->model;
+        $Product->division_id = $request->division;
+        $Product->brand_id = $request->brand;
+        $product->code = $request->code;
+        $product->name = $request->name;
+        $product->slug = $request->slug;
+        $product->model = $request->model;
+        $product->division_id = $request->division;
+        $product->brand_id = $request->brand;
+        $product->body = $request->body;
+        $product->status = $request->status;
+        $product->save();
+        return redirect(route('product.index'))->with('message_store', 'product updated Successfully');
     }
 
     /**

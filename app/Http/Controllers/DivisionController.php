@@ -37,12 +37,26 @@ class DivisionController extends Controller
                 return strtoupper($Division->name);
             })
 
+            ->editColumn('status', function (Division $Division) {
+
+                $active = ($Division->status);
+                if($active==1){
+                 $active = 'Active';
+                }
+                else {
+                $active = 'InActive';
+                }
+                return $active;
+
+                // return strtoupper($Division->status);
+            })
+
             ->setRowId(function ($Division) {
                 return $Division->id;
             })
 
             ->addColumn('divisionEdit', function (Division $Division) {
-                return '<a href="/admin/division/'.$Division->id.'/edit"><span class="fas fa-edit"></span></a>'. $Division->id;
+                return '<a href="/admin/division/'.$Division->id.'/edit"><span class="fas fa-edit"></span></a>';
             })
 
 
@@ -82,6 +96,10 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
         //
+        switch ($request->submitbutton) {
+
+            case 'save':
+
         $this->validate($request, [
             'code' => 'required|unique:divisions',
             'name' => 'required',
@@ -93,8 +111,37 @@ class DivisionController extends Controller
         $division->name = $request->name;
         $division->slug = $request->slug;
         $division->body = $request->body;
+        if ($request->status=0)
+        {
+            $division->status=0;
+        }
+        $division->status = $request->status;
         $division->save();
         return redirect(route('division.index'))->with('message_store', 'Division Created Successfully');
+        break;
+
+        case 'save and new':
+
+            $this->validate($request, [
+                'code' => 'required|unique:divisions',
+                'name' => 'required',
+                'slug' => 'required',
+                // 'body' => 'required',
+            ]);
+            $division = new Division();
+            $division->code = $request->code;
+            $division->name = $request->name;
+            $division->slug = $request->slug;
+            $division->body = $request->body;
+            if ($request->status=0)
+        {
+            $division->status=0;
+        }
+        $division->status = $request->status;
+            $division->save();
+            return redirect(route('division.create'))->with('message_store', 'Division Created Successfully');
+            break;
+        }
     }
 
     /**

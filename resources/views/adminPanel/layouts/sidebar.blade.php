@@ -194,7 +194,7 @@
                             @endpermitToParent
                             @permitToParent('Supplier')
                             <li class="nav-item">
-                                <a href="{{ route('admin.home') }}"
+                                <a href="{{ route('supplier.index') }}"
                                     class="nav-link {{ request()->is('admin/supplier') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Supplier</p>
