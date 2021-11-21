@@ -200,43 +200,87 @@
 <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
 <script src="jquery-3.5.0.min.js"></script>
 <script>
-            $(document).ready(function(){
-            // Get value on keyup funtion
-            $("#fb").change(function(){
+    $(document).ready(function(){
+     // Get value on keyup funtion
+     $("#fb").change(function(){
 
-            var rt=0;
-            var x = Number($("#fb").val());
+     var rt=0;
+     var x = Number($("#fb").val());
 
-            var sb=x + 2;
-            var tb=x + 4;
-            var lb=x + 6;
-            var rp=(lb + 20);
-            var rt=((rp*15)/100)+rp;
+     var sb=x + 5;
+     var tb=x + 10;
+     var lb=x + 20;
+     var rp=(lb + 20);
+     var rt=((rp*15)/100)+rp;
 
-            $('#sb').val(sb);
-            $('#tb').val(tb);
-            $('#lb').val(lb);
-            $('#rt').val(rt);
+     $('#sb').val(sb);
+     $('#tb').val(tb);
+     $('#lb').val(lb);
+     $('#rt').val(rt);
 
-        });
-        });
-        $(document).ready(function(){
-            // Get value on keyup funtion
-            $("#lb").change(function(){
+ });
+ });
 
-            var rt=0;
-            var y = Number($("#lb").val());
-
-            var rp=(y + 20);
-            var rt=((rp*15)/100)+rp;
+ $(document).ready(function(){
+     // Get value on keyup funtion
+     $("#sb").change(function(){
 
 
-            $('#rt').val(rt);
+     var a = Number($("#sb").val());
 
 
-        });
-        });
+     var tb=a + 5;
+     var lb=a + 15;
+     var rp=(lb + 20);
+     var rt=((rp*15)/100)+rp;
+
+
+     $('#tb').val(tb);
+     $('#lb').val(lb);
+     $('#rt').val(rt);
+
+ });
+ });
+
+ $(document).ready(function(){
+     // Get value on keyup funtion
+     $("#tb").change(function(){
+
+
+     var b = Number($("#tb").val());
+
+     var lb=b + 10;
+     var rp=(lb + 20);
+     var rt=((rp*15)/100)+rp;
+
+
+     $('#lb').val(lb);
+     $('#rt').val(rt);
+
+ });
+ });
+
+ $(document).ready(function(){
+     // Get value on keyup funtion
+     $("#lb").change(function(){
+
+     // var rt=0;
+     var y = Number($("#lb").val());
+
+
+     var rp=(y + 20);
+     var rt=((rp*15)/100)+rp;
+
+
+
+     $('#rt').val(rt);
+
+ });
+ });
+
+
 </script>
+
 <script>
     $(function() {
         CKEDITOR.replace('editor1');

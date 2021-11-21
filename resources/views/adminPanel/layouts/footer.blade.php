@@ -8,7 +8,7 @@
 <!-- /.control-sidebar -->
 <!-- Main Footer -->
 <footer class="main-footer">
-    <strong>Copyright &copy; 2020 <a href="http://hsbr-apps.com">hsbr-apps</a>.</strong>
+    <strong>Copyright &copy; 2020-<?php echo date("Y"); ?> <a href="http://hsbr-apps.com">hsbr-apps</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
         <b>BETA-Version</b> 1.0.1

@@ -21,6 +21,8 @@ class CreateCustomersTable extends Migration
             $table->text('body');
             $table->string('image')->nullable();
             $table->boolean('status')->nullable();
+            $table->text('CreatedBy');
+            $table->text('UpdatedBy');
             $table->timestamps();
         });
     }

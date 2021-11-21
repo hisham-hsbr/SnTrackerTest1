@@ -33,6 +33,8 @@ class CreateBottomPricesTable extends Migration
 
 
             $table->boolean('status')->default(false);
+            $table->text('CreatedBy');
+            $table->text('UpdatedBy');
 
             $table->timestamps();
         });

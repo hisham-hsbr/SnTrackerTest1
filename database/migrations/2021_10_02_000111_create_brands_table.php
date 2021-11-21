@@ -21,6 +21,8 @@ class CreateBrandsTable extends Migration
             $table->text('body')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->default(false);
+            $table->text('CreatedBy');
+            $table->text('UpdatedBy');
             $table->timestamps();
         });
     }
