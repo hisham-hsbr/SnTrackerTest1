@@ -3,7 +3,7 @@
 @section('main-content')
 <div class="container">
     <div class="card">
-        <div class="card-header">Edit details of {{$admin->name}}</div>
+        <div class="card-header">ss Edit details of {{$admin->name}}</div>
 
         <div class="card-body">
             @include('multiauth::message')

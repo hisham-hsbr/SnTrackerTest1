@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Bitfumes\Multiauth\Model\Admin;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -18,6 +19,11 @@ class Product extends Model
     public function brands()
     {
         return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class,'CreatedBy','id');
     }
 
 }

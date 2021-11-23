@@ -4,7 +4,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            @include('multiauth::message')
+            {{-- @include('multiauth::message') --}}
 
             <div class="row">
                 <div class="col-md-12">
@@ -55,12 +55,12 @@
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="title">Code</label>
-                                                        <input type="text" class="form-control" name="code" id="title"
+                                                        <input type="text" class="form-control" name="code" style="text-transform: uppercase" id="title"
                                                             value="{{ old('code') }}" placeholder="Enter Code" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="subtitle">brand</label>
-                                                        <input type="text" class="form-control" name="name" id="name"
+                                                        <input type="text" class="form-control"  name="name" style="text-transform: uppercase" id="name"
                                                             value="{{ old('name') }}" placeholder="Enter brand" />
                                                     </div>
                                                     <div class="form-group">
@@ -73,9 +73,8 @@
                                                         <input type="text" class="form-control" name="body" id="body"
                                                             value="{{ old('body') }}" placeholder="Enter Remarks" />
                                                     </div>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" name="status"
-                                                            value="1" id="status" />
+                                                    <div class="form-group pl-5">
+                                                        <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
                                                         <label class="form-check-label" for="status">Active</label>
                                                     </div>
                                                 </div>
@@ -88,7 +87,8 @@
                                             </div>
                                             <div class="card-footer">
                                                 @permitTo('CreateBrand')
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-success" value="save" name="submitbutton">Submit</button>
+                                            <button type="submit" class="btn btn-primary" value="save and new" name="submitbutton">Submit And Create</button>
                                                 @endpermitTo
                                                 <a type="button" href="{{ route('brand.index') }}"
                                                     class="btn btn-warning">Back</a>
@@ -178,7 +178,35 @@
                 .replace(/-+$/, '') // Trim - from end of text
         }
     </script>
+@if ($errors->count() > 0)
+@foreach ($errors->all() as $error)
 
+<script>
+    toastr.error("{{ $error }}");
+</script>
+@endforeach
+@endif
+
+@if(Session::has('message_store'))
+<script>
+toastr.success("{!!Session::get('message_store')!!}");
+</script>
+@endif
+
+@if(Session::has('message_update'))
+<script>
+toastr.success("{!!Session::get('message_update')!!}");
+</script>
+@endif
+
+@if ($errors->count() > 0)
+@foreach ($errors->all() as $error)
+
+<script>
+    toastr.error("{{ $error }}");
+</script>
+@endforeach
+@endif
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use admin;
 use App\Brand;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -41,6 +42,15 @@ class BrandController extends Controller
             ->setRowId(function ($Brand) {
                 return $Brand->id;
             })
+            ->editColumn('CreatedBy', function (Brand $Brand) {
+
+                return strtoupper($Brand->createdUser->name);
+            })
+            ->editColumn('UpdatedBy', function (Brand $Brand) {
+
+                // return strtoupper($Brand->updatedUser->name."( ".$Brand->created_at." )");
+                return strtoupper($Brand->updatedUser->name);
+            })
 
             ->addColumn('brandEdit', function (Brand $Brand) {
 
@@ -49,6 +59,17 @@ class BrandController extends Controller
 
             })
 
+            ->editColumn('status', function (Brand $Brand) {
+
+                $active = ($Brand->status);
+                if($active==1){
+                 $active = 'Active';
+                }
+                else {
+                $active = 'InActive';
+                }
+                return $active;
+            })
 
 
             // ->addColumn('columnEdit', '<a href="Brand/edit"><span class="fas fa-edit"></span></a>')
@@ -85,20 +106,63 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        switch ($request->submitbutton) {
+
+            case 'save':
+
         $this->validate($request, [
             'code' => 'required|unique:brands',
             'name' => 'required',
             'slug' => 'required',
             // 'body' => 'required',
         ]);
+
+        // $adminid=(auth('admin')->user()->id);
+
         $brand = new Brand();
         $brand->code = $request->code;
         $brand->name = $request->name;
         $brand->slug = $request->slug;
         $brand->body = $request->body;
+
+        $brand->status = $request->status;
+
+
+
+        $brand->CreatedBy = auth('admin')->user()->id;
+        $brand->UpdatedBy = auth('admin')->user()->id;
+
         $brand->save();
         return redirect(route('brand.index'))->with('message_store', 'Brand Created Successfully');
+
+        break;
+        case 'save and new':
+            $this->validate($request, [
+                'code' => 'required|unique:brands',
+                'name' => 'required',
+                'slug' => 'required',
+                // 'body' => 'required',
+            ]);
+
+            // $adminid=(auth('admin')->user()->id);
+
+            $brand = new Brand();
+            $brand->code = $request->code;
+            $brand->name = $request->name;
+            $brand->slug = $request->slug;
+            $brand->body = $request->body;
+
+            $brand->status = $request->status;
+
+
+
+            $brand->CreatedBy = auth('admin')->user()->id;
+            $brand->UpdatedBy = auth('admin')->user()->id;
+
+            $brand->save();
+            return redirect(route('brand.create'))->with('message_store', 'Brand Created Successfully');
+            break;
+        }
     }
 
     /**
@@ -139,6 +203,8 @@ class BrandController extends Controller
     {
         //
 
+        // dd(auth('admin')->user()->id);
+
         $this->validate($request, [
             'code' => "required|unique:brands,code,$id",
             'name' => 'required',
@@ -151,6 +217,12 @@ class BrandController extends Controller
         $brand->slug = $request->slug;
         $brand->body = $request->body;
 
+        $brand->status = $request->status;
+
+
+
+
+$brand->UpdatedBy = auth('admin')->user()->id;
 
 
         $brand->save();

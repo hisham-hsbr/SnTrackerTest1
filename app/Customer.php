@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Bitfumes\Multiauth\Model\Admin;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
@@ -14,5 +15,10 @@ class Customer extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class,'CreatedBy','id');
     }
 }

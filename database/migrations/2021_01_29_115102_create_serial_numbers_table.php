@@ -22,6 +22,13 @@ class CreateSerialNumbersTable extends Migration
             // $table->unsignedBigInteger('product_id');
             // $table->foreign('product_id')->references('id')->on('products');
             $table->text('remark');
+
+            $table->integer('CreatedBy')->unsigned()->index();
+            $table->foreign('CreatedBy')->references('id')->on('admins')->onDelete('cascade');
+
+            $table->integer('UpdatedBy')->unsigned()->index();
+            $table->foreign('UpdatedBy')->references('id')->on('admins')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

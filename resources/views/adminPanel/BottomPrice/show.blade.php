@@ -118,43 +118,43 @@ $(function() {
         serverSide: true,
         ajax: '{!! route('get.BottomPrices') !!}',
         columns: [
-            { data: 'id', name: 'id' },
+            { data: 'id', name: 'id' ,defaultContent: ''},
             @permitTo('ReadCodeBottom')
-            { data: 'code', name: 'code' },
+            { data: 'code', name: 'code'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadNameBottom')
-            { data: 'name', name: 'name' },
+            { data: 'name', name: 'name' ,defaultContent: '' },
             @endpermitTo
             @permitTo('ReadModelBottom')
-            { data: 'model', name: 'model' },
+            { data: 'model', name: 'model'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadDivisionBottom')
-            { data: 'division', name: 'division' },
+            { data: 'division', name: 'division'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadBrandBottom')
-            { data: 'brand', name: 'brand' },
+            { data: 'brand', name: 'brand'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadFirstBottom')
-            { data: 'fb', name: 'fb' },
+            { data: 'fb', name: 'fb'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadSecondBottom')
-            { data: 'sb', name: 'sb' },
+            { data: 'sb', name: 'sb'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadThirdBottom')
-            { data: 'tb', name: 'tb' },
+            { data: 'tb', name: 'tb'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadLastBottom')
-            { data: 'lb', name: 'lb' },
+            { data: 'lb', name: 'lb'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('ReadRtBottom')
-            { data: 'DT_RowData.data-rt', name: 'rt' },
+            { data: 'DT_RowData.data-rt', name: 'rt'  ,defaultContent: ''},
             @endpermitTo
             @permitTo('UpdateBottomPrice')
-            { data: 'columnEdit', name: 'columnEdit' },
-            // { data: 'columnDelete', name: 'columnDelete' },
+            { data: 'columnEdit', name: 'columnEdit'  ,defaultContent: ''},
+            // { data: 'columnDelete', name: 'columnDelete'  ,defaultContent: ''},
             @endpermitTo
-            { data: 'updated_at', name: 'updated_at' },
-            // { data: 'action2', name: 'action2' },
+            { data: 'updated_at', name: 'updated_at'  ,defaultContent: ''},
+            // { data: 'action2', name: 'action2'  ,defaultContent: ''},
 
         ]
     });

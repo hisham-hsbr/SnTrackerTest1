@@ -111,11 +111,13 @@ class DivisionController extends Controller
         $division->name = $request->name;
         $division->slug = $request->slug;
         $division->body = $request->body;
-        if ($request->status=0)
+        if ($request->status==0)
         {
-            $division->status=0;
+            $division->status==0;
         }
         $division->status = $request->status;
+        $division->CreatedBy = auth('admin')->user()->id;
+        $division->UpdatedBy = auth('admin')->user()->id;
         $division->save();
         return redirect(route('division.index'))->with('message_store', 'Division Created Successfully');
         break;

@@ -17,9 +17,9 @@
                     <a href="{{ route('brand.create') }}" class="btn btn-sm btn-success ml-1 ">New brand</a>
                 </span>
                 @endpermitTo
-                <span class="float-right">
+                {{-- <span class="float-right">
                     <a href="" class="btn btn-sm btn-success toastrDefaultSuccess">New</a>
-                </span>
+                </span> --}}
             </div>
 
             <div class="card-body">
@@ -32,6 +32,9 @@
                                 <th style="width: 10px">#</th>
                                 <th>Code#</th>
                                 <th>Brand</th>
+                                <th>Created By</th>
+                                <th>Updated By</th>
+                                <th>Status</th>
                                 <th>Action</th>
                                 <!-- <th>Serial Number</th>
                                                                                             <th>date</th> -->
@@ -88,6 +91,18 @@
                     {
                         data: 'name',
                         name: 'name'
+                    },
+                    {
+                        data: 'CreatedBy',
+                        name: 'CreatedBy'
+                    },
+                    {
+                        data: 'UpdatedBy',
+                        name: 'UpdatedBy'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
                     },
                     {
                         data: 'brandEdit',

@@ -21,8 +21,13 @@ class CreateSuppliersTable extends Migration
             $table->text('body')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->default(false);
-            $table->text('CreatedBy');
-            $table->text('UpdatedBy');
+
+            $table->integer('CreatedBy')->unsigned()->index();
+            $table->foreign('CreatedBy')->references('id')->on('admins')->onDelete('cascade');
+
+            $table->integer('UpdatedBy')->unsigned()->index();
+            $table->foreign('UpdatedBy')->references('id')->on('admins')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

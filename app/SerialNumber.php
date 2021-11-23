@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Product;
 use App\Supplier;
+use Bitfumes\Multiauth\Model\Admin;
+use Illuminate\Database\Eloquent\Model;
 
 class SerialNumber extends Model
 {
@@ -21,5 +22,10 @@ class SerialNumber extends Model
     public function Suppliers()
     {
         return $this->belongsToMany(Supplier::class);
+    }
+
+    public function admins()
+    {
+        return $this->belongsTo(Admin::class,'CreatedBy','id');
     }
 }

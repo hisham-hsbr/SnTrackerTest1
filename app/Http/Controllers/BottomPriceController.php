@@ -41,7 +41,7 @@ class BottomPriceController extends Controller
 
         // return Datatables::of(BottomPrice::where('status', 1))
         return Datatables::of(BottomPrice::query())
-        
+
             ->editColumn('code', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->code);
             })

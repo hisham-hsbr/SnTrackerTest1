@@ -137,11 +137,13 @@ class ProductController extends Controller
         $product->division_id = $request->division;
         $product->brand_id = $request->brand;
         $product->body = $request->body;
-        if ($request->status=0)
+        if ($request->status==0)
         {
-            $BottomPrice->status=0;
+            $product->status=0;
         }
         $product->status = $request->status;
+        $product->CreatedBy = auth('admin')->user()->id;
+        $product->UpdatedBy = auth('admin')->user()->id;
         $product->save();
         return redirect(route('product.index'))->with('message_store', 'product Created Successfully');
     }
