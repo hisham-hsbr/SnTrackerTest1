@@ -42,28 +42,28 @@ class BottomPriceController extends Controller
         // return Datatables::of(BottomPrice::where('status', 1))
         return Datatables::of(BottomPrice::query())
 
-            ->editColumn('code', function (BottomPrice $BottomPrice) {
+            ->addColumn('code', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->code);
             })
 
-            ->editColumn('name', function (BottomPrice $BottomPrice) {
+            ->addColumn('name', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->name);
 
             })
-            ->editColumn('model', function (BottomPrice $BottomPrice) {
+            ->addColumn('model', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->model);
             })
-            ->editColumn('division', function (BottomPrice $BottomPrice) {
+            ->addColumn('division', function (BottomPrice $BottomPrice) {
 
                 return strtoupper($BottomPrice->Divisions->name);
             })
-            ->editColumn('brand', function (BottomPrice $BottomPrice) {
+            ->addColumn('brand', function (BottomPrice $BottomPrice) {
                 return strtoupper($BottomPrice->Brands->name);
             })
             ->setRowId(function ($BottomPrice) {
                 return $BottomPrice->id;
             })
-            ->editColumn('updated_at', function (BottomPrice $BottomPrice) {
+            ->addColumn('updated_at', function (BottomPrice $BottomPrice) {
                 return $BottomPrice->updated_at->diffForHumans();
             })
 
@@ -71,7 +71,15 @@ class BottomPriceController extends Controller
                 'data-rt' => 'SAR-{{$rt}}',
             ])
 
+            ->addColumn('CreatedBy', function (BottomPrice $BottomPrice) {
 
+                return strtoupper($BottomPrice->createdUser->name);
+            })
+            ->addColumn('UpdatedBy', function (BottomPrice $BottomPrice) {
+
+                // return strtoupper($BottomPrice->updatedUser->name."( ".$BottomPrice->created_at." )");
+                return strtoupper($BottomPrice->updatedUser->name);
+            })
 
             ->addColumn('columnEdit', function (BottomPrice $BottomPrice) {
 
@@ -98,6 +106,7 @@ class BottomPriceController extends Controller
         $BottomPrices = BottomPrice::where('status', 1)->paginate(15);
         // $BottomPrices = BottomPrice::where('status', 1)->orderBy('created_at', 'DESC')->paginate(15);
         // $BottomPrices = BottomPrice::paginate(15);
+        // $Brands = Brand::where('status', 1);
         $Brands = Brand::all();
         $Divisions = Division::all();
         return view('adminPanel.BottomPrice.show', compact('BottomPrices','Brands','Divisions'));
@@ -117,8 +126,8 @@ class BottomPriceController extends Controller
     public function create()
     {
         //
-        $Brands = Brand::all();
-        $Divisions = Division::all();
+        $Brands = Brand::where('status', 1)->get();
+        $Divisions = Division::where('status', 1)->get();
 
         return view('adminPanel.BottomPrice.create', compact('Brands','Divisions'));
 
@@ -140,7 +149,7 @@ class BottomPriceController extends Controller
 
                 //
                 $this->validate($request, [
-                    'code' => 'required',
+                    'code' => 'required|unique:bottom_prices',
                     'name' => 'required',
                     'model' => 'required',
                     'division' => 'required',
@@ -168,6 +177,10 @@ class BottomPriceController extends Controller
                 }
 
                 $BottomPrice->status = $request->status;
+
+                $BottomPrice->CreatedBy = auth('admin')->user()->id;
+                $BottomPrice->UpdatedBy = auth('admin')->user()->id;
+
                 $BottomPrice->save();
                 // $BottomPrice->divisions()->save($request->division);
                 return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice Created Successfully');
@@ -178,7 +191,7 @@ class BottomPriceController extends Controller
 
             case 'save and new':
                 $this->validate($request, [
-                    'code' => 'required',
+                    'code' => 'required|unique:bottom_prices',
                     'name' => 'required',
                     'model' => 'required',
                     'division' => 'required',
@@ -205,6 +218,10 @@ class BottomPriceController extends Controller
                     $BottomPrice->status=0;
                 }
                 $BottomPrice->status = $request->status;
+
+                $BottomPrice->CreatedBy = auth('admin')->user()->id;
+                $BottomPrice->UpdatedBy = auth('admin')->user()->id;
+
                 $BottomPrice->save();
                 return redirect(route('BottomPrice.create'))->with('message_store', 'BottomPrice Created Successfully');
                 break;
@@ -297,6 +314,10 @@ class BottomPriceController extends Controller
         }
 
         $BottomPrice->status = $request->status;
+
+
+        $BottomPrice->UpdatedBy = auth('admin')->user()->id;
+
         $BottomPrice->save();
         return redirect(route('BottomPrice.index'))->with('message_store', 'BottomPrice updated Successfully');
     }

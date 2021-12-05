@@ -52,12 +52,8 @@ class BrandController extends Controller
                 return strtoupper($Brand->updatedUser->name);
             })
 
-            ->addColumn('brandEdit', function (Brand $Brand) {
 
 
-                return '<a href="/admin/brand/'.$Brand->id.'/edit"><span class="fas fa-edit"></span></a>';
-
-            })
 
             ->editColumn('status', function (Brand $Brand) {
 
@@ -71,6 +67,13 @@ class BrandController extends Controller
                 return $active;
             })
 
+
+            ->addColumn('brandEdit', function (Brand $Brand) {
+
+
+                return '<a href="/admin/brand/'.$Brand->id.'/edit"><span class="fas fa-edit"></span></a>';
+
+            })
 
             // ->addColumn('columnEdit', '<a href="Brand/edit"><span class="fas fa-edit"></span></a>')
 
@@ -125,9 +128,15 @@ class BrandController extends Controller
         $brand->slug = $request->slug;
         $brand->body = $request->body;
 
+
+        if ($request->status==0)
+        {
+            $brand->status==0;
+        }
+
         $brand->status = $request->status;
 
-
+// dd($brand->status);
 
         $brand->CreatedBy = auth('admin')->user()->id;
         $brand->UpdatedBy = auth('admin')->user()->id;
@@ -151,6 +160,11 @@ class BrandController extends Controller
             $brand->name = $request->name;
             $brand->slug = $request->slug;
             $brand->body = $request->body;
+
+            if ($request->status==0)
+            {
+                $brand->status==0;
+            }
 
             $brand->status = $request->status;
 
@@ -217,6 +231,10 @@ class BrandController extends Controller
         $brand->slug = $request->slug;
         $brand->body = $request->body;
 
+        if ($request->status==0)
+        {
+            $brand->status==0;
+        }
         $brand->status = $request->status;
 
 

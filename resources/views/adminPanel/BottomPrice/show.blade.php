@@ -69,6 +69,12 @@
                         @permitTo('ReadRtBottom')
                         <th>RT+VAT</th>
                         @endpermitTo
+                        @permitTo('CreatedBy')
+                        <th>Created By</th>
+                        @endpermitTo
+                        @permitTo('UpdatedBy')
+                        <th>Updated By</th>
+                        @endpermitTo
                         @permitTo('UpdateBottomPrice')
                         <th>Action</th>
                         {{-- <th></th> --}}
@@ -148,6 +154,12 @@ $(function() {
             @endpermitTo
             @permitTo('ReadRtBottom')
             { data: 'DT_RowData.data-rt', name: 'rt'  ,defaultContent: ''},
+            @endpermitTo
+            @permitTo('CreatedBy')
+            {data: 'CreatedBy',name: 'CreatedBy',defaultContent: ''},
+            @endpermitTo
+            @permitTo('UpdatedBy')
+            {data: 'UpdatedBy',name: 'UpdatedBy',defaultContent: ''},
             @endpermitTo
             @permitTo('UpdateBottomPrice')
             { data: 'columnEdit', name: 'columnEdit'  ,defaultContent: ''},

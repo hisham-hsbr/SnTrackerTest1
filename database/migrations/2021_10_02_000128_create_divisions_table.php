@@ -20,7 +20,8 @@ class CreateDivisionsTable extends Migration
             $table->string('slug');
             $table->text('body')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->default(false);
+
+            $table->boolean('status')->nullable();
 
             $table->integer('CreatedBy')->unsigned()->index();
             $table->foreign('CreatedBy')->references('id')->on('admins')->onDelete('cascade');

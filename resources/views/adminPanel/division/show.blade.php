@@ -30,6 +30,13 @@
                                 <th style="width: 10px">#</th>
                                 <th>Code#</th>
                                 <th>Division</th>
+                                @permitTo('CreatedBy')
+                                <th>Created By</th>
+                                @endpermitTo
+                                @permitTo('UpdatedBy')
+                                <th>Updated By</th>
+                                @endpermitTo
+                                <th>Status</th>
                                 <th>Action</th>
                                 <!-- <th>Serial Number</th>
                                                                                             <th>date</th> -->
@@ -86,6 +93,16 @@
                     {
                         data: 'name',
                         name: 'name'
+                    },
+                    @permitTo('CreatedBy')
+                    {data: 'CreatedBy',name: 'CreatedBy'},
+                    @endpermitTo
+                    @permitTo('UpdatedBy')
+                    {data: 'UpdatedBy',name: 'UpdatedBy'},
+                    @endpermitTo
+                    {
+                        data: 'status',
+                        name: 'status'
                     },
                     {
                         data: 'divisionEdit',

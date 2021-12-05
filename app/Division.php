@@ -16,8 +16,12 @@ class Division extends Model
     }
 
 
-    public function admins()
+    public function createdUser()
     {
         return $this->belongsTo(Admin::class,'CreatedBy','id');
+    }
+    public function updatedUser()
+    {
+        return $this->belongsTo(Admin::class,'UpdatedBy','id');
     }
 }

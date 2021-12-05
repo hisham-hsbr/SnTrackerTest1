@@ -71,11 +71,11 @@
 
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                  <label>Division</label>
+                                                  <label>Division</label>     <i class="fas fa-sync"></i>
                                                   <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
                                                     <option selected="selected">{{old('division')}}</option>
                                                     @foreach($Divisions as $Division)
-                                                    <option value="{{$Division->id}}">{{$Division->name}}</option>
+                                                    <option value="{{$Division->id}}">{{strtoupper($Division->name)}}</option>
                                                     @endforeach
 
                                                   </select>
@@ -85,14 +85,15 @@
 
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                  <label>Brand</label>
+                                                  <label>Brand</label>     <i class="fas fa-sync"></i>
                                                   <select class="form-control select2" style="width: 100%;" name="brand" id="brand" style="text-transform: uppercase" >
                                                     <option selected="selected">{{old('brand')}}</option>
                                                     @foreach($Brands as $Brand)
-                                                    <option value="{{$Brand->id}}">{{$Brand->name}}</option>
+                                                    <option value="{{$Brand->id}}">{{strtoupper($Brand->name)}}</option>
                                                     @endforeach
 
                                                   </select>
+
                                                 </div>
                                             </div>
 
@@ -128,10 +129,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
-                                                    <label class="form-check-label" for="status">Active</label>
-                                                </div>
+                                        <div class="form-group pl-5">
+                                            <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
+                                            <label class="form-check-label" for="status">Active</label>
+                                        </div>
 
 
 
@@ -340,14 +341,7 @@
 </script>
 @endif
 
-@if ($errors->count() > 0)
-    @foreach ($errors->all() as $error)
 
-    <script>
-        toastr.error("{{ $error }}");
-    </script>
-    @endforeach
-@endif
 
 
 @endsection

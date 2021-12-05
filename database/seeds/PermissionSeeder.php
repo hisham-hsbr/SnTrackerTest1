@@ -30,6 +30,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteUser',
             'parent' => 'User',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'User',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'User',
+    ]);
 
 
         // //for - Role
@@ -68,6 +76,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeletePermission',
             'parent' => 'Permission',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Permission',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Permission',
+    ]);
 
 
         //for - Product
@@ -87,6 +103,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteProduct',
             'parent' => 'Product',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Product',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Product',
+    ]);
 
 
         //for - Customer
@@ -106,6 +130,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteCustomer',
             'parent' => 'Customer',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Customer',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Customer',
+    ]);
 
 
 
@@ -126,6 +158,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteSupplier',
             'parent' => 'Supplier',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Supplier',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Supplier',
+    ]);
 
 
 
@@ -147,6 +187,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteSerialNumber',
             'parent' => 'SerialNumber',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'SerialNumber',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'SerialNumber',
+    ]);
 
 
         //for - BottomPrice
@@ -222,6 +270,14 @@ class PermissionSeeder extends Seeder
             'name' => 'ReadBrandBottom',
             'parent' => 'Bottom',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Bottom',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Bottom',
+    ]);
 
 
 
@@ -260,6 +316,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteEnquiries',
             'parent' => 'Enquiries',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Enquiries',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Enquiries',
+    ]);
 
         //for - Reports
         Permission::create([
@@ -278,6 +342,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteReports',
             'parent' => 'Reports',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Reports',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Reports',
+    ]);
 
 
         //for - Brand
@@ -297,6 +369,16 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteBrand',
             'parent' => 'Brand',
         ]);
+        Permission::create([
+            'name' => 'CreatedBy',
+            'parent' => 'Brand',
+        ]);
+    Permission::create([
+        'name' => 'UpdatedBy',
+        'parent' => 'Brand',
+    ]);
+
+
 
         //for - Division
         Permission::create([
@@ -315,8 +397,14 @@ class PermissionSeeder extends Seeder
             'name' => 'DeleteDivision',
             'parent' => 'Division',
         ]);
-
-
+        Permission::create([
+                'name' => 'CreatedBy',
+                'parent' => 'Division',
+            ]);
+        Permission::create([
+            'name' => 'UpdatedBy',
+            'parent' => 'Division',
+        ]);
 
 
 

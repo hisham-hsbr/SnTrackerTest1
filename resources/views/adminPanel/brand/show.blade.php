@@ -32,8 +32,12 @@
                                 <th style="width: 10px">#</th>
                                 <th>Code#</th>
                                 <th>Brand</th>
+                                @permitTo('CreatedBy')
                                 <th>Created By</th>
+                                @endpermitTo
+                                @permitTo('UpdatedBy')
                                 <th>Updated By</th>
+                                @endpermitTo
                                 <th>Status</th>
                                 <th>Action</th>
                                 <!-- <th>Serial Number</th>
@@ -92,14 +96,12 @@
                         data: 'name',
                         name: 'name'
                     },
-                    {
-                        data: 'CreatedBy',
-                        name: 'CreatedBy'
-                    },
-                    {
-                        data: 'UpdatedBy',
-                        name: 'UpdatedBy'
-                    },
+                    @permitTo('CreatedBy')
+                    {data: 'CreatedBy',name: 'CreatedBy'},
+                    @endpermitTo
+                    @permitTo('UpdatedBy')
+                    {data: 'UpdatedBy',name: 'UpdatedBy'},
+                    @endpermitTo
                     {
                         data: 'status',
                         name: 'status'

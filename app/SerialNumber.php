@@ -23,9 +23,12 @@ class SerialNumber extends Model
     {
         return $this->belongsToMany(Supplier::class);
     }
-
-    public function admins()
+    public function createdUser()
     {
         return $this->belongsTo(Admin::class,'CreatedBy','id');
+    }
+    public function updatedUser()
+    {
+        return $this->belongsTo(Admin::class,'UpdatedBy','id');
     }
 }

@@ -75,9 +75,9 @@
                                                   <label>Division</label>
                                                   <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
                                                     {{-- <option selected="selected">{{old('division')}}</option> --}}
-                                                    <option value="{{$BottomPrice->divisions->id}}" selected="selected">{{$BottomPrice->divisions->name}}</option>
+                                                    <option value="{{$BottomPrice->divisions->id}}" selected="selected">{{strtoupper($BottomPrice->divisions->name)}}</option>
                                                     @foreach($Divisions as $Division)
-                                                    <option value="{{$Division->id}}">{{$Division->name}}</option>
+                                                    <option value="{{$Division->id}}">{{strtoupper($Division->name)}}</option>
                                                     @endforeach
 
                                                   </select>
@@ -89,9 +89,9 @@
                                                   <label>Brand</label>
                                                   <select class="form-control select2" style="width: 100%;" name="brand" id="brand" style="text-transform: uppercase" >
                                                     {{-- <option selected="selected">{{old('brand')}}</option> --}}
-                                                    <option value="{{$BottomPrice->brands->id}}" selected="selected">{{$BottomPrice->brands->name}}</option>
+                                                    <option value="{{$BottomPrice->brands->id}}" selected="selected">{{strtoupper($BottomPrice->brands->name)}}</option>
                                                     @foreach($Brands as $Brand)
-                                                    <option value="{{$Brand->id}}">{{$Brand->name}}</option>
+                                                    <option value="{{$Brand->id}}">{{strtoupper($Brand->name)}}</option>
                                                     @endforeach
 
                                                   </select>

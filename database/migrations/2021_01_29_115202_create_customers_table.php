@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->string('image')->nullable();
+
             $table->boolean('status')->nullable();
 
             $table->integer('CreatedBy')->unsigned()->index();

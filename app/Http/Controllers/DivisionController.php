@@ -55,6 +55,35 @@ class DivisionController extends Controller
                 return $Division->id;
             })
 
+
+            ->editColumn('CreatedBy', function (Division $Division) {
+
+                return strtoupper($Division->createdUser->name);
+            })
+            ->editColumn('UpdatedBy', function (Division $Division) {
+
+                // return strtoupper($Division->updatedUser->name."( ".$Division->created_at." )");
+                return strtoupper($Division->updatedUser->name);
+            })
+
+
+
+
+            ->editColumn('status', function (Division $Division) {
+
+                $active = ($Division->status);
+                if($active==1){
+                 $active = 'Active';
+                }
+                else {
+                $active = 'InActive';
+                }
+                return $active;
+            })
+
+
+
+
             ->addColumn('divisionEdit', function (Division $Division) {
                 return '<a href="/admin/division/'.$Division->id.'/edit"><span class="fas fa-edit"></span></a>';
             })
@@ -111,13 +140,20 @@ class DivisionController extends Controller
         $division->name = $request->name;
         $division->slug = $request->slug;
         $division->body = $request->body;
+
+
         if ($request->status==0)
         {
             $division->status==0;
         }
+
         $division->status = $request->status;
+
+
+
         $division->CreatedBy = auth('admin')->user()->id;
         $division->UpdatedBy = auth('admin')->user()->id;
+
         $division->save();
         return redirect(route('division.index'))->with('message_store', 'Division Created Successfully');
         break;
@@ -135,11 +171,16 @@ class DivisionController extends Controller
             $division->name = $request->name;
             $division->slug = $request->slug;
             $division->body = $request->body;
-            if ($request->status=0)
-        {
-            $division->status=0;
-        }
-        $division->status = $request->status;
+
+            if ($request->status==0)
+            {
+                $division->status==0;
+            }
+            $division->status = $request->status;
+
+            $brand->CreatedBy = auth('admin')->user()->id;
+            $brand->UpdatedBy = auth('admin')->user()->id;
+
             $division->save();
             return redirect(route('division.create'))->with('message_store', 'Division Created Successfully');
             break;
@@ -197,7 +238,13 @@ class DivisionController extends Controller
         $division->slug = $request->slug;
         $division->body = $request->body;
 
+        if ($request->status==0)
+        {
+            $division->status==0;
+        }
+        $division->status = $request->status;
 
+        $division->UpdatedBy = auth('admin')->user()->id;
 
         $division->save();
         return redirect(route('division.index'))->with('message_store', 'Division updated Successfully');

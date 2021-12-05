@@ -21,9 +21,13 @@ class Product extends Model
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
 
-    public function admins()
+    public function createdUser()
     {
         return $this->belongsTo(Admin::class,'CreatedBy','id');
+    }
+    public function updatedUser()
+    {
+        return $this->belongsTo(Admin::class,'UpdatedBy','id');
     }
 
 }
