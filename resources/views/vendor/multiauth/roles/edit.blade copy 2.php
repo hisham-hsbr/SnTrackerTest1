@@ -36,7 +36,7 @@
 
         {{-- -----------------------------}}
 
-{{-- 
+
         <table id="example" class="display nowrap" style="width:100%">
 
             <thead>
@@ -58,7 +58,8 @@
                         checked
                         @endif
                         value="{{$permission->id}}" id="{{$permission->id}}">
-                        
+                        <!-- <input class="form-check-input" type="checkbox" checked> -->
+                        {{-- <label for="{{$permission->id}}" class="form-check-label">{{$permission->name}}</label> --}}
                     </td>
                     <td><label for="{{$permission->id}}" class="form-check-label">{{$permission->name}}</label></td>
                 </tr>
@@ -74,7 +75,7 @@
                 </tr>
             </tfoot>
 
-        </table> --}}
+        </table>
 
 
 
@@ -90,7 +91,7 @@
 
 
 
-                        <div class="row">
+                        {{-- <div class="row">
                             @foreach($permissions as $key => $value)
                             <div class="col-lg-12 mb-12">
                                 <div class="card-body">
@@ -138,7 +139,7 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
                     </div>
                     @if($role->name <>'super')

@@ -73,8 +73,22 @@
                                                 <div class="form-group">
                                                   <label>Division</label>     <i class="fas fa-sync"></i>
                                                   <select class="form-control select2" style="width: 100%;" name="division" id="division" style="text-transform: uppercase" >
-                                                    <option selected="selected">{{old('division')}}</option>
+                                                    
+                                                    @if (old('division')!=='')
+                                                    
+                                                    @endif
+                                                    {{-- <option selected="selected" value="0">-- Choose User Type --</option> --}}
+                                                    <option selected="selected"
+                                                        @if (old('division')=='')
+                                                             value="0" disabled>-- Choose Division --
+                                                        @else
+
+                                                         > {{old('division')}}
+                                                        @endif
+                                                        
+                                                    </option>
                                                     @foreach($Divisions as $Division)
+                                                    
                                                     <option value="{{$Division->id}}">{{strtoupper($Division->name)}}</option>
                                                     @endforeach
 
@@ -87,7 +101,7 @@
                                                 <div class="form-group">
                                                   <label>Brand</label>     <i class="fas fa-sync"></i>
                                                   <select class="form-control select2" style="width: 100%;" name="brand" id="brand" style="text-transform: uppercase" >
-                                                    <option selected="selected">{{old('brand')}}</option>
+                                                    {{-- <option selected="selected">{{old('brand')}}</option> --}}
                                                     @foreach($Brands as $Brand)
                                                     <option value="{{$Brand->id}}">{{strtoupper($Brand->name)}}</option>
                                                     @endforeach

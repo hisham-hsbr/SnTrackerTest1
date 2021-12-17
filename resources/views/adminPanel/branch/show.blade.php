@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Brand')
+@section('pageTitle', 'Branch')
 @section('head')
 
     <!-- DataTables -->
@@ -12,9 +12,9 @@
         <div class="card">
             <div class="card-header">
                 Prodect List
-                @permitTo('CreateBrand')
+                @permitTo('CreateBranch')
                 <span class="float-right">
-                    <a href="{{ route('brand.create') }}" class="btn btn-sm btn-success ml-1 ">New Brand</a>
+                    <a href="{{ route('branch.create') }}" class="btn btn-sm btn-success ml-1 ">New Branch</a>
                 </span>
                 @endpermitTo
                 {{-- <span class="float-right">
@@ -31,7 +31,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Code#</th>
-                                <th>Brand</th>
+                                <th>Branch</th>
                                 @permitTo('CreatedBy')
                                 <th>Created By</th>
                                 @endpermitTo
@@ -44,10 +44,10 @@
                                 @permitTo('UpdatedOn')
                                 <th>Updated At</th>
                                 @endpermitTo
-                                @permitTo('StatusBrand')
+                                @permitTo('StatusBranch')
                                 <th>Status</th>
                                 @endpermitTo
-                                @permitTo('UpdateBrand')
+                                @permitTo('UpdateBranch')
                                 <th>Action</th>
                                 @endpermitTo
 
@@ -92,7 +92,7 @@
             $('#example3').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('get.brands') !!}',
+                ajax: '{!! route('get.Branches') !!}',
                 columns: [
                     {data: 'id',name: 'id',defaultContent: ''},
                     {data: 'code',name: 'code',defaultContent: ''},
@@ -109,11 +109,11 @@
                     @permitTo('UpdatedOn')
                     { data: 'updated_at', name: 'updated_at'  ,defaultContent: ''},
                     @endpermitTo
-                    @permitTo('StatusBrand')
+                    @permitTo('StatusBranch')
                     {data: 'status',name: 'status',defaultContent: ''},
                     @endpermitTo
-                    @permitTo('UpdateBrand')
-                    {data: 'brandEdit',name: 'brandEdit',defaultContent: ''},
+                    @permitTo('UpdateBranch')
+                    {data: 'branchEdit',name: 'branchEdit',defaultContent: ''},
                     @endpermitTo
 
 

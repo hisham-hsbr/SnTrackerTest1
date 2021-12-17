@@ -152,7 +152,7 @@ class BottomPriceController extends Controller
                     'code' => 'required|unique:bottom_prices',
                     'name' => 'required',
                     'model' => 'required',
-                    'division' => 'required',
+                    'division' => 'required|not_in:0',
                     'brand' => 'required',
                     'fb' => 'required',
                     'sb' => 'required',

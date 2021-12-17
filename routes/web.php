@@ -40,6 +40,7 @@ Route::resource('admin/product', 'ProductController');
 Route::resource('admin/SerialNumber', 'SerialNumberController');
 Route::resource('admin/BottomPrice', 'BottomPriceController');
 Route::resource('admin/brand', 'BrandController');
+Route::resource('admin/branch', 'BranchController');
 Route::resource('admin/division', 'DivisionController');
 Route::resource('admin/supplier', 'SupplierController');
 
@@ -57,6 +58,7 @@ Route::get('Supplier', 'SupplierController@getsuppliers')->name('get.suppliers')
 
 Route::get('BottomPrice', 'BottomPriceController@getBottomPrices')->name('get.BottomPrices');
 Route::get('Brand', 'BrandController@getbrands')->name('get.brands');
+Route::get('Branch', 'BranchController@getbranches')->name('get.Branches');
 
 Route::get('Division', 'DivisionController@getdivisions')->name('get.divisions');
 

@@ -52,7 +52,13 @@ class BrandController extends Controller
                 return strtoupper($Brand->updatedUser->name);
             })
 
-
+            ->addColumn('created_at', function (Brand $Brand) {
+                return $Brand->created_at->format('d-M-Y');
+            })
+            ->addColumn('updated_at', function (Brand $Brand) {
+                // return $Brand->updated_at->format('d-M-Y');
+                return $Brand->updated_at->format('d-M-Y');
+            })
 
 
             ->editColumn('status', function (Brand $Brand) {

@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Brand - Create')
+@section('pageTitle', 'Branch - Create')
 @section('main-content')
     <!-- Main content -->
     <section class="content">
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Brand Creation</h5>
+                            <h5 class="card-title">Branch Creation</h5>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -45,7 +45,7 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
                                     </div>
-                                    <form role="form" action="{{ route('brand.store') }}" method="post"
+                                    <form role="form" action="{{ route('branch.store') }}" method="post"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="card-body">
@@ -59,9 +59,9 @@
                                                             value="{{ old('code') }}" placeholder="Enter Code" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="subtitle">Brand</label>
+                                                        <label for="subtitle">Branch</label>
                                                         <input type="text" class="form-control"  name="name" style="text-transform: uppercase" id="name"
-                                                            value="{{ old('name') }}" placeholder="Enter brand" />
+                                                            value="{{ old('name') }}" placeholder="Enter Branch" />
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="slug">Slug</label>
@@ -86,11 +86,11 @@
                                                 <!-- /.col-->
                                             </div>
                                             <div class="card-footer">
-                                                @permitTo('CreateBrand')
+                                                @permitTo('CreateBranch')
                                                 <button type="submit" class="btn btn-success" value="save" name="submitbutton">Submit</button>
                                             <button type="submit" class="btn btn-primary" value="save and new" name="submitbutton">Submit And Create</button>
                                                 @endpermitTo
-                                                <a type="button" href="{{ route('brand.index') }}"
+                                                <a type="button" href="{{ route('branch.index') }}"
                                                     class="btn btn-warning">Back</a>
                                             </div>
                                         </div>

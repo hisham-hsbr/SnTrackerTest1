@@ -1,5 +1,5 @@
 @extends('adminPanel.app')
-@section('pageTitle', 'Brand - Create')
+@section('pageTitle', 'Branch - Edit')
 @section('main-content')
     <!-- Main content -->
     <section class="content">
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Brand Creation</h5>
+                            <h5 class="card-title">Branch Edit</h5>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -45,53 +45,59 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
                                     </div>
-                                    <form role="form" action="{{ route('brand.store') }}" method="post"
+                                    <form role="form" action="{{ route('branch.update', $Branch->id) }}" method="post"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-lg-4">
-                                                </div>
+
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label for="title">Code</label>
-                                                        <input type="text" class="form-control" name="code" style="text-transform: uppercase" id="title"
-                                                            value="{{ old('code') }}" placeholder="Enter Code" />
+                                                        <input type="text" class="form-control" name="code" id="title"
+                                                            style="text-transform: uppercase" value="{{ $Branch->code }}"
+                                                            placeholder="Enter Code" />
                                                     </div>
+                                                </div>
+                                                <div class="col-lg-8">
                                                     <div class="form-group">
-                                                        <label for="subtitle">Brand</label>
-                                                        <input type="text" class="form-control"  name="name" style="text-transform: uppercase" id="name"
-                                                            value="{{ old('name') }}" placeholder="Enter brand" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="slug">Slug</label>
-                                                        <input type="text" class="form-control" readonly name="slug"
-                                                            id="slug" value="{{ old('slug') }}" placeholder="Slug" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="subtitle">Remarks</label>
-                                                        <input type="text" class="form-control" name="body" id="body"
-                                                            value="{{ old('body') }}" placeholder="Enter Remarks" />
-                                                    </div>
-                                                    <div class="form-group pl-5">
-                                                        <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
-                                                        <label class="form-check-label" for="status">Active</label>
+                                                        <label for="subtitle">Branch Name</label>
+                                                        <input type="text" class="form-control" name="name" id="name"
+                                                            style="text-transform: uppercase" value="{{ $Branch->name }}"
+                                                            placeholder="Enter Branch Name" />
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                                <div class="col-lg-8">
+                                                    <div class="form-group">
+                                                        <label for="slug">Slug</label>
+                                                        <input type="text" class="form-control" readonly name="slug"
+                                                            id="slug" value="{{ $Branch->slug }}" placeholder="Slug" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="form-group">
+                                                        <label for="subtitle">Remarks</label>
+                                                        <input type="text" class="form-control" name="body" id="body"
+                                                            value="{{ $Branch->body }}" placeholder="Enter Remarks" />
+                                                    </div>
+                                                </div>
 
-                                            <div class="col-lg-4">
 
-                                                <!-- /.col-->
-                                            </div>
-                                            <div class="card-footer">
-                                                @permitTo('CreateBrand')
-                                                <button type="submit" class="btn btn-success" value="save" name="submitbutton">Submit</button>
-                                            <button type="submit" class="btn btn-primary" value="save and new" name="submitbutton">Submit And Create</button>
-                                                @endpermitTo
-                                                <a type="button" href="{{ route('brand.index') }}"
-                                                    class="btn btn-warning">Back</a>
+                                                <div class="col-lg-8">
+                                                    <input type="checkbox" class="form-check-input" name="status" value="1" id="status" @if($Branch->status==1){{'checked'}} @endif />
+                                                    <label class="form-check-label" for="status">Active</label>
+                                                </div>
+
+
+                                                <div class="card-footer">
+                                                    @permitTo('UpdateBranch')
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                    @endpermitTo
+                                                    <a type="button" href="{{ route('branch.index') }}"
+                                                        class="btn btn-warning">Back</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -178,32 +184,14 @@
                 .replace(/-+$/, '') // Trim - from end of text
         }
     </script>
+    @if ($errors->count() > 0)
+        @foreach ($errors->all() as $error)
 
-
-@if(Session::has('message_store'))
-<script>
-toastr.success("{!!Session::get('message_store')!!}");
-</script>
-@endif
-
-@if(Session::has('message_update'))
-<script>
-toastr.success("{!!Session::get('message_update')!!}");
-</script>
-@endif
-
-@if ($errors->count() > 0)
-@foreach ($errors->all() as $error)
-
-<script>
-    toastr.error("{{ $error }}");
-</script>
-@endforeach
-@endif
-
-
-
-
+            <script>
+                toastr.error("{{ $error }}");
+            </script>
+        @endforeach
+    @endif
 
 
 
