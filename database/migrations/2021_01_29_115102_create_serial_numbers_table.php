@@ -18,7 +18,7 @@ class CreateSerialNumbersTable extends Migration
             $table->text('invoice');
             $table->text('invoiceSupplier');
             $table->date('date');
-            $table->text('SerialNumber')->unique();
+            $table->text('SerialNumber');
             // $table->unsignedBigInteger('product_id');
             // $table->foreign('product_id')->references('id')->on('products');
             $table->text('remark');
