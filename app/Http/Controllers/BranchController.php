@@ -120,7 +120,7 @@ class BranchController extends Controller
             case 'save':
 
         $this->validate($request, [
-            'code' => 'required|unique:brands',
+            'code' => 'required|unique:Branches',
             'name' => 'required',
             'slug' => 'required',
             // 'body' => 'required',
@@ -153,7 +153,7 @@ class BranchController extends Controller
         break;
         case 'save and new':
             $this->validate($request, [
-                'code' => 'required|unique:branchs',
+                'code' => 'required|unique:branches',
                 'name' => 'required',
                 'slug' => 'required',
                 // 'body' => 'required',
@@ -207,9 +207,9 @@ class BranchController extends Controller
         //
         
         $Branch = Branch::where('id', $id)->first();
-        // return view('adminPanel.BRAND.edit', compact('BRAND'));
+        // return view('adminPanel.Branch.edit', compact('Branch'));
 
-        // $BRAND = BRAND::all();
+        // $Branch = Branch::all();
         return view('adminPanel.branch.edit', compact('Branch'));
     }
 
